@@ -1,30 +1,38 @@
 # Trial class - Programming advanced feedbacks with Arduino.
-
-Hi there, and welcome to this Interaction and electronics video class. I’m Lorenzo and I’ll be your teacher for this class. 
-
+[slide-1]
+Hi there, and welcome to this Interaction and electronics video class. I’m Lorenzo and I’ll be your teacher for this class.
 The goal of this class is to learn how to program advanced feedbacks and light effects using Arduino.
 
-If you are taking this class, I assume that you already have some basic Arduino experience, you, at liest manage to blink a LED once, and you are capable of reading and writing simple arduino sketches. 
-If you don’t remember how to control a LED, or how to read a value from a button or an analog sensor, I highly reccomend you to refresh your Arduino skills watching some Arduino tutorials for beginner. You can find some nice youtube video tutorials at this link.
+[slide-2]
+If you are taking this class, I assume that you already have some basic Arduino experience, you, at list manage to blink a LED once, and you are capable of reading and writing simple Arduino sketches.
+If you don’t remember how to control a LED, or how to read a value from a button or an analog sensor, I highly recommend you to refresh your Arduino skills watching some Arduino tutorials for beginners. [slide-3] You can find some nice youtube video tutorials at this link.
 
-In this class we are going to focus on how to create nice and expressive feedbacks using the electronic components which you already have in your IDE interactive Electronc kit. 
-We will try to push ourself in designing nice fades effects, and control sensor and actuators in an asyncrounous way. 
-At the end of the course we will also see how to go from sketching an interaction on paper, to programming it using “state machines”. a very handy programming paradigm which can be very helpful in structuring code of interactive products. 
+[slide-4]
+In this class we are going to focus on how to create nice and expressive feedback using the electronic components which you already have in your IDE interactive Electronics kit.
+We will try to go beyond the basic light pattern (green = good & red = bad), and design more expressive and beautiful feedback.
+For example we will try to design animated light patterns which could be experienced as aggressive or kind, hectic or sleepy, regular or romantic.
+Also we will learn how to read sensors and control actuators in an asynchronous way.
+At the end of the course we will see how to go from sketching an interaction on paper, to programming it using “state machines”: a very handy programming paradigm which can be very helpful in structuring code for interactive products.
 
-All the exercises of this class are related to programming a very specific device: Together we will build and code a “pomodoro timer”. Which is handy device that people use to manage working time and tasks which require a lot of concentration. Eventually you can also use it for your self to help you keep focus while studying. 
+[slide-5]
+All the exercises of this class are related to programming a very specific device: Together we will build and code a “pomodoro timer”. Which is handy device that people use to manage working time and tasks which require a lot of concentration. Eventually you can also use it for your self to help you keep focus while studying.
 
-To help you making your pomodoro timer nice and ready to be placed on your desk I also designed for you a paper box which you can assemble and use.
-The box is designed to comfortably contain: your seeduino Lotus board, 2 pushbuttons, one potentiometer, 1 servo modor and 1 chainable rgb led. 
+[slide-6]
+To help you make your pomodoro timer nice and ready to be placed on your desk I designed for you a paper box which you can assemble and use.
+The box is designed to fit: your seeduino Lotus board, 2 pushbuttons, one potentiometer, 1 servo motor and 1 chainable rgb led.
 You can just fold it and use it, or you can customize the paper template that you find in your resources folder to your own specific needs.
 Instructions on how to assemble the paper box can be found in the resources folder as well. Hope you like this little box !!
 
-Ready to start? 
-So please download the resources folder from this link. 
-Make sure you have the Arduino IDE Installed, if not, you can just download a new copy from the Arduino.cc website here. 
+[slide-7]
+Ready to start?
+So please download the resources folder from this link.
 
-Before moving to the next video, also make sure you have the pomodoro-timer box assembled with all the components inside. 
+[slide-8]
+Before moving to the next video, make sure you have the Arduino IDE Installed, if not, you can just download a new copy from the Arduino.cc website here.
 
-Lastly, if you have never used this Seeduino Lotus board which comes with you electronic kit before on your computer, you will have to do a couple of things before beeing able to program it. 
-	First of all you have to install some drivers for it. You can find the drivers and more instructions on how to setup the board at this link [http://wiki.seeedstudio.com/Seeeduino_Lotus/]. Also make sure to add the seed studio boards to your Arduino IDE. You can find instruction on how to do that also on the seed studio wike right here [http://wiki.seeedstudio.com/Seeed_Arduino_Boards/] Just follow the procedure described there to configure the board for your operating system and you will be ready to go.
+Also make sure you have the pomodoro-timer box assembled with all the components inside.
 
-Once you are ready, move on to the next video where we will check that everything works and we will start programming our timer. 
+Lastly, if you have never used this Seeduino Lotus board which comes with you electronics kit on your computer, you will have to do a couple of things before beeing able to program it.
+First of all you have to install some drivers for it. You can find the drivers and more instructions on how to setup the board at this link [http://wiki.seeedstudio.com/Seeeduino_Lotus/]. Secondly make sure to add the seed studio boards to your Arduino IDE. You can find instruction on how to do that also on the seed studio wike right here [http://wiki.seeedstudio.com/Seeed_Arduino_Boards/] Just follow the procedure described there to configure the board for your operating system and you will be ready to go.
+
+Once you are ready, move on to the next video where we will check that everything works and we will start programming the pomodoro timer.
