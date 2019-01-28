@@ -1,29 +1,30 @@
 # class 00 - setup and blink
-So, you got the box, and hopefully you manage to squeeze everything inside without breaking it. It is now time to make some good use of it. go ahead and plug your board into the computer via the USB cable. 
+[slide 1]
+Hi guys! Welcome back to the very first part of this Arduino class! I Hope you manage to easily complete all the tasks I assigned you at the end of the previous video. Anyhow, we are now going to check that everything works and I'll give you some hints on how to fix the most common issues you might encounter.
 
-First of all let’s verify that we can uplad some code to the board. Open you arduino IDE, go to the menu and select tools-> board-> seeduino lotus. You probably didn’t install the Seed stuidio boards correctly, go back to the previous video and try again. 
+[close shot on hand and box]
+So, you got the box, and hopefully you manage to squeeze everything inside without breaking it. It is now time to make some good use of it. go ahead and plug your board into the computer via the USB cable.
 
-Then we have to select the specific port we have the board connected to go to tools.-> port … and select the correct port. If you don’t find your Arduino between the ports, that is probably because you havn’t installed the driver correctly, or maybe you just need to reinstall your computer. 
+[switch to IDE]
+First of all let’s verify that we can upload some code to the board. Open you arduino IDE, go to the menu and select tools-> board-> seeduino lotus, if you don't find it in your Arduino installation, You probably didn’t install the Seedstudio boards package correctly, go back to the seed studio wiki [switch to slides][slide 2] and try to follow the instructions again.
 
-If everything went as expected, let’s try to upload some simple code the the baord, I have here the blink example, let’s try to uplaod it... uploading… done uplaoding! urra! We don’t see anything because the on board led is inside the box, but we know the upload was successfull! great! 
+[switch back to IDE]
+Then we have to select the specific port we have the board connected to go to tools.-> port … and select the correct port your seeduino lotus is connected to. If you don’t find your Arduino between the ports, that is probably because you haven’t installed the driver correctly, or maybe you just need to reinstall your computer. [switch to slide][slide 3]Try to follow the driver installation instructions again and continue once you are able to select the right serial port.
 
-Let’s try now to make this chainable RGB Led that we connected to the Arduino blink. Although it looks like a very normal LED, this component is quite advanced, the chainable LED module first of all is RGB that means that you can make it change any color. And secondly it is meant to be conencted in series with other chainable led into very long chains. You can find more documentation about this component here. For now, what is important for us to know is that in order to control the led we will need to program it using a external library. Let’s install the library first. 
+[switch back to IDE]
+If everything went as expected, let’s try to upload some simple code the the baord, I have here the blink example, let’s try to uplaod it... uploading… done uplaoding! urra! We don’t see anything because the on board led is inside the box, but we know the upload was successfull! great!
 
-Inside your Arduino Ide, you can go to tools, library, library manager and search for “chainable led”. Once you find it just select install, and we should be ready to test that we can finally control the color of the led. To test the Led, open the seond code snippet that you find in your resource folder called 01_chainable_led.ino
+[switch to prototype]
+Let’s try now to make this chainable RGB Led that we connected to the Arduino blink. Although it looks like a very normal LED, this component is quite advanced, [switch to slide][slide 4] the chainable LED module first of all is RGB that means that you can make it change any color. And secondly it is meant to be conencted in series with other chainable led into very long chains. You can find more documentation about this component here. For now, what is important for us to know is that in order to control the led we will need to program it using a external library. Let’s install the library first.
 
-Let’s quickly have a look at the code structure…
-[live comments on the code] 
+[switch back to IDE]
+Inside your Arduino Ide, you can go to sketch, include library, library manager and search for “chainable led”. Once you find it just select ir and click install. Now we should finally be ready to control the color of the led. To test the Led, open the second code snippet that you find in your resource folder called 01_chainable_led.ino
 
-The code looks allright, let’s uplaod it and see if it actually works. mmm ok, apparently we can control this LED very good!
+Let’s quickly have a look at the code structure
+[live comments on the code]
 
-Now that you know the basics on how to control this LED I’d like to assign you your fist challenge: can you make the LED fade in and fade out? I give you a small hint: maybe you can use the “for loop” construct to solve this challenge. 
+The code looks alright, let’s upload it to our board and see if it actually works. [switch to prototype] mmm ok, apparently we can control this LED very good!
+
+[switch to slide][slide 5]
+Now that you know the basics on how to control this LED I’d like to assign you your fist challenge: can you make the LED fade in and fade out? I give you a small hint: maybe you can use the “for loop” construct to solve this challenge.
 Once you think you made it go to the next video and we will look at the solution together.
-
-
-
-
-
-
-
-  
-

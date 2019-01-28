@@ -32,7 +32,7 @@ Before moving to the next video, make sure you have the Arduino IDE Installed, i
 
 Also make sure you have the pomodoro-timer box assembled with all the components inside.
 
-Lastly, if you have never used this Seeduino Lotus board which comes with you electronics kit on your computer, you will have to do a couple of things before beeing able to program it.
-First of all you have to install some drivers for it. You can find the drivers and more instructions on how to setup the board at this link [http://wiki.seeedstudio.com/Seeeduino_Lotus/]. Secondly make sure to add the seed studio boards to your Arduino IDE. You can find instruction on how to do that also on the seed studio wike right here [http://wiki.seeedstudio.com/Seeed_Arduino_Boards/] Just follow the procedure described there to configure the board for your operating system and you will be ready to go.
+Lastly, if you have never used this Seeduino Lotus board which comes with you electronics kit on your computer, you will have to do a couple of things before being able to program it.
+First of all you have to install some drivers for it. You can find the drivers and more instructions on how to setup the board at this link. Secondly make sure to add the seed studio boards to your Arduino IDE. You can find instruction on how to do that also on the seed studio wiki right here. Just follow the procedure described there to configure the board for your operating system and you will be ready to go.
 
 Once you are ready, move on to the next video where we will check that everything works and we will start programming the pomodoro timer.
