@@ -1,0 +1,29 @@
+# class 00 - setup and blink
+So, you got the box, and hopefully you manage to squeeze everything inside without breaking it. It is now time to make some good use of it. go ahead and plug your board into the computer via the USB cable. 
+
+First of all let’s verify that we can uplad some code to the board. Open you arduino IDE, go to the menu and select tools-> board-> seeduino lotus. You probably didn’t install the Seed stuidio boards correctly, go back to the previous video and try again. 
+
+Then we have to select the specific port we have the board connected to go to tools.-> port … and select the correct port. If you don’t find your Arduino between the ports, that is probably because you havn’t installed the driver correctly, or maybe you just need to reinstall your computer. 
+
+If everything went as expected, let’s try to upload some simple code the the baord, I have here the blink example, let’s try to uplaod it... uploading… done uplaoding! urra! We don’t see anything because the on board led is inside the box, but we know the upload was successfull! great! 
+
+Let’s try now to make this chainable RGB Led that we connected to the Arduino blink. Although it looks like a very normal LED, this component is quite advanced, the chainable LED module first of all is RGB that means that you can make it change any color. And secondly it is meant to be conencted in series with other chainable led into very long chains. You can find more documentation about this component here. For now, what is important for us to know is that in order to control the led we will need to program it using a external library. Let’s install the library first. 
+
+Inside your Arduino Ide, you can go to tools, library, library manager and search for “chainable led”. Once you find it just select install, and we should be ready to test that we can finally control the color of the led. To test the Led, open the seond code snippet that you find in your resource folder called 01_chainable_led.ino
+
+Let’s quickly have a look at the code structure…
+[live comments on the code] 
+
+The code looks allright, let’s uplaod it and see if it actually works. mmm ok, apparently we can control this LED very good!
+
+Now that you know the basics on how to control this LED I’d like to assign you your fist challenge: can you make the LED fade in and fade out? I give you a small hint: maybe you can use the “for loop” construct to solve this challenge. 
+Once you think you made it go to the next video and we will look at the solution together.
+
+
+
+
+
+
+
+  
+
