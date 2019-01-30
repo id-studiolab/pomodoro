@@ -1,14 +1,10 @@
 /*
    The following demonstrate how change to use the potentiometer
-   to change the color of the led
+   to change the color of the led, setColorHSB() function is used.
 
    STEPS:
    -make sure you connected your chainable LED
    to the right pin on your seeduino Lotus
-
-   TODO: 
-   Now the led color changes only at the begininning of the loop, 
-   can you make the color change at any time when turning the pot?  
 */
 
 #include <ChainableLED.h>
@@ -24,7 +20,6 @@ int numLeds = 1;
 ChainableLED leds(ledPin1, ledPin2, numLeds);
 
 void setup() {
-  leds.init();
 }
 
 void loop() {
@@ -42,6 +37,3 @@ void loop() {
     delay(10);
   }
 }
-
-
-

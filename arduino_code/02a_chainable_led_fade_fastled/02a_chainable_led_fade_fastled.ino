@@ -11,27 +11,34 @@
     and make them all fade.
 */
 
-#include <ChainableLED.h>
+#include <FastLED.h>
 
 //connections
-int ledPin1 = 4;
-int ledPin2 = 5;
+#define DATA_PIN 5
+#define CLOCK_PIN 4
 
-//create a ChainableLED object
-int numLeds = 1;
+//how many leds
+#define NUM_LEDS 1
 
-ChainableLED leds(ledPin1, ledPin2, numLeds);
+//an array to hold the led data
+CRGB leds[NUM_LEDS];
+
+uint16_t aquamarine=0x7FFFD4;
 
 void setup() {
+	FastLED.addLeds<P9813, DATA_PIN, CLOCK_PIN, RGB>(leds, NUM_LEDS);
+	leds[0]=aquamarine;
 }
 
 void loop() {
   for (int i = 0; i < 255; i++) {
-    leds.setColorRGB(0, i, i, i);
+		FastLED.setBrightness(i);
+		FastLED.show();
     delay(5);
   }
   for (int i = 255; i > 0; i--) {
-    leds.setColorRGB(0, i, i, i);
+		FastLED.setBrightness(i);
+		FastLED.show();
     delay(5);
   }
 }

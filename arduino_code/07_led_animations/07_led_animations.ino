@@ -1,10 +1,14 @@
 /*
    The following demonstrate how change to use the potentiometer
-   to change the color of the led while the led is fading.
+   to change the color of the led
 
    STEPS:
    -make sure you connected your chainable LED
    to the right pin on your seeduino Lotus
+
+   TODO:
+   Now the led color changes only at the begininning of the loop,
+   can you make the color change at any time when turning the pot?
 */
 
 #include <ChainableLED.h>
@@ -19,16 +23,23 @@ int potPin = A0;
 int numLeds = 1;
 ChainableLED leds(ledPin1, ledPin2, numLeds);
 
-// asincronous fading
+// animation variables
 int fadeDuration = 2000;
 long lastLedUpdateTime = 0;
-int fadesteps = 40;
+int fadesteps = 100;
 float fadeUpdateInterval=fadeDuration/fadesteps;
 int fadeDirection = 1;
-float fadeMax = 1;
+float fadeMax = 0.8;
 float fadeMin = 0;
 float fadeAmountXStep = (fadeMax - fadeMin) / fadesteps;
 float brightness;
+
+
+enum animationType{
+	CROSSFADE,
+	BLINK,
+	RAINBOW
+}
 
 void setup() {
 }
@@ -45,4 +56,7 @@ void loop() {
     lastLedUpdateTime = millis();
   }
   leds.setColorHSB(0, hue, 1.0, brightness/2);
+	Serial.println(brightness*180);
 }
+
+void

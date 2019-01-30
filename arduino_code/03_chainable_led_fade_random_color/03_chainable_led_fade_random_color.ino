@@ -1,6 +1,6 @@
 /*
-   The following demonstrate how to make
-   one groove chainable Led fade.
+   The following sketch demonstrate how to make
+   one groove chainable Led fade, each time with a random color.
 
    STEPS:
    -make sure you connected your chainable LED
@@ -18,7 +18,6 @@ int numLeds = 1;
 ChainableLED leds(ledPin1, ledPin2, numLeds);
 
 void setup() {
-  leds.init();
 }
 
 void loop() {
@@ -29,7 +28,7 @@ void loop() {
 
 /*
  * use the for loop to adjust the brightness of the led
- * mupltiplying a "brightness index" (i) 
+ * mupltiplying a "brightness index" (i)
  * for each color component(r,g,b)
 */
   for (float i = 0; i < 1; i += 0.01) {
@@ -41,6 +40,3 @@ void loop() {
     delay(10);
   }
 }
-
-
-

@@ -12,10 +12,12 @@
 */
 
 #include <ChainableLED.h>
+#include <Servo.h>
 
 //connections
 int ledPin1 = 4;
 int ledPin2 = 5;
+int servoPin = 6;
 
 int potPin = A0;
 
@@ -26,7 +28,7 @@ ChainableLED leds(ledPin1, ledPin2, numLeds);
 // asincronous fading
 int fadeDuration = 2000;
 long lastLedUpdateTime = 0;
-int fadesteps = 40;
+int fadesteps = 100;
 float fadeUpdateInterval=fadeDuration/fadesteps;
 int fadeDirection = 1;
 float fadeMax = 0.8;
@@ -34,14 +36,17 @@ float fadeMin = 0;
 float fadeAmountXStep = (fadeMax - fadeMin) / fadesteps;
 float brightness;
 
+Servo myServo;
+
 void setup() {
-  leds.init();
+	myServo.attach(servoPin);
+	Serial.begin(9600);
 }
 
 void loop() {
   float potValue = analogRead(potPin);
   float hue = potValue / 1024;
-  
+
   if (millis() - lastLedUpdateTime > fadeUpdateInterval) {
     brightness = brightness + fadeAmountXStep * fadeDirection;
     if (brightness > fadeMax || brightness < fadeMin) {
@@ -49,8 +54,7 @@ void loop() {
     }
     lastLedUpdateTime = millis();
   }
-  leds.setColorHSB(0, hue, 1.0, brightness);
+  leds.setColorHSB(0, hue, 1.0, brightness/2);
+	myServo.write(brightness*180);
+	Serial.println(brightness*180);
 }
-
-
-

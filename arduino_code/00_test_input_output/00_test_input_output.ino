@@ -1,13 +1,13 @@
 /*
- * The following code can be used 
+ * The following code can be used
  * to test the pomodoro timer connections.
- * 
+ *
  * STEPS:
  * -Change the variables according to your wiring;
  * -Open the serial port and check that the two buttons are working
- * -Verify that the servo motors moves and the light fades 
- * when turning the potentiometer. 
- * 
+ * -Verify that the servo motors moves and the light fades
+ * when turning the potentiometer.
+ *
  */
 #include <Servo.h>
 #include <ChainableLED.h>
@@ -36,9 +36,6 @@ void setup() {
 
   //start the servo
   myServo.attach(servoPin);
-
-  //start the led
-  leds.init();
 
   //start the serial port
   Serial.begin (9600);
