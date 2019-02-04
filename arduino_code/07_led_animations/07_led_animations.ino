@@ -6,9 +6,6 @@
    -make sure you connected your chainable LED
      to the right pin on your Seeeduino Lotus board
 
-   TODO:
-   Now the led color changes only at the begininning of the loop,
-   can you make the color change at any time when turning the pot?
 */
 
 #include <FastLED.h>
