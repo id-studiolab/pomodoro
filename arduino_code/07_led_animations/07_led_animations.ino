@@ -1,10 +1,10 @@
 /*
-   The following demonstrate demonstrate how to create beautyful
-	 asinchrounous led fades animation.
+   The following code demonstrates how to create beautiful
+	 asynchronous LEDs fading animations.
 
    STEPS:
    -make sure you connected your chainable LED
-   to the right pin on your seeduino Lotus
+     to the right pin on your Seeeduino Lotus board
 
 */
 
@@ -20,7 +20,7 @@
 //an array to hold the led data
 CRGB leds[NUM_LEDS];
 
-//we can have multipla type of animations
+//we offer multiple types of animation
 enum animationType{
   CROSSFADE,
   BLINK,
@@ -28,7 +28,7 @@ enum animationType{
   NONE
 };
 
-// asincronous fading
+// asynchronous fading
 int fadeDuration=0;
 long lastLedUpdateTime = 0;
 int fadeSteps = 0;
