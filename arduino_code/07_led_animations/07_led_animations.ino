@@ -1,11 +1,14 @@
 /*
-   The following demonstrate demonstrate how to create beautyful
-	 asinchrounous led fades animation.
+   The following demonstrate how change to use the potentiometer
+   to change the color of the led
 
    STEPS:
    -make sure you connected your chainable LED
    to the right pin on your seeduino Lotus
 
+   TODO:
+   Now the led color changes only at the begininning of the loop,
+   can you make the color change at any time when turning the pot?
 */
 
 #include <FastLED.h>
@@ -59,11 +62,18 @@ CRGB color2;
 
 void setup() {
   FastLED.addLeds<P9813, DATA_PIN, CLOCK_PIN, RGB>(leds, NUM_LEDS);
-  initCrossFadeAnimation(CRGB::Yellow,CRGB::Blue, 1000, 100);
+  initCrossFadeAnimation(CRGB::Pink,CRGB::Blue, 1000, 40);
+  Serial.begin(9600);
 }
 
 void loop() {
+  //initCrossFadeAnimation(CRGB::Pink,CRGB::Blue, 5000, 40);
   updateLeds();
+  // Serial.print(currentColor.red);
+  // Serial.print(currentColor.green);
+  // Serial.println(currentColor.blue);
+
+  //delay(100);
 }
 
 void initCrossFadeAnimation(CRGB color_1,CRGB color_2, int fadeDuration, int fadeSteps){
@@ -124,18 +134,27 @@ void updateLeds(){
 }
 
 
+
 // Blend one CRGB color toward another CRGB color by a given amount.
 // Blending is linear, and done in the RGB color space.
 
 void fadeTowardColor(){
 
   if (targetColor==currentColor){
+    Serial.println("time to change direction");
+
     if (targetColor==color1){
+      Serial.println("new target is color2");
       targetColor=color2;
     }else if(targetColor==color2){
       targetColor=color1;
+      Serial.println("new target is color1");
+    }else{
+      Serial.println("dunno");
     }
+
     recalcDirections();
+
   }
 
   CRGB newColor;
@@ -153,3 +172,5 @@ void fadeTowardColor(){
 
   currentColor= newColor;
 }
+
+
