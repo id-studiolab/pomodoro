@@ -56,7 +56,7 @@ CRGB targetColor;
 CRGB color1;
 CRGB color2;
 
-
+// the trusty setup function
 void setup() {
   FastLED.addLeds<P9813, DATA_PIN, CLOCK_PIN, RGB>(leds, NUM_LEDS);
   initCrossFadeAnimation(CRGB::Yellow,CRGB::Blue, 1000, 100);
