@@ -1,14 +1,14 @@
 /*
-  The following code demonstrates how to create beautiful
-	asynchronous LEDs fading animations and how to switch between
-	the different modalities
+   The following code demonstrates how to create beautiful
+   asynchronous LEDs fading animations and how to switch between
+   the different modalities
 
    STEPS:
-  -make sure you connected your chainable LED
-  	to the right pin on your Seeeduino Lotus board
-	-use the potentiometer to change color
-	-press the button to switch animation
-*/
+   -make sure you connected your chainable LED
+   to the right pin on your Seeeduino Lotus board
+   -use the potentiometer to change color
+   -press the button to switch animation
+ */
 
 #include <ChainableLED.h>
 
@@ -43,12 +43,12 @@ boolean lastButtonAPressed;
 
 
 //we offer multiple types of animation
-enum animationType{
-	SOLID,
-  FADE,
-  BLINK,
-  RAINBOW,
-  NONE,
+enum animationType {
+	SINGLE_COLOR,
+	FADE,
+	BLINK,
+	RAINBOW,
+	NONE,
 };
 animationType currentAnimation=NONE;
 int numAnimations=5;
@@ -58,9 +58,9 @@ void setup() {
 
 void loop() {
 	//if the button is pressed we change animation
-	if (readButtonA()){
+	if (readButtonA()) {
 		//check that we are within the range of the the animations we programmed
-		if (currentAnimation<numAnimations-1){
+		if (currentAnimation<numAnimations-1) {
 			//since currentAnimation is a ENUM we cannot simply do currentAnimation++
 			currentAnimation= (animationType)(currentAnimation + 1);
 		}else{
@@ -69,29 +69,29 @@ void loop() {
 
 		// start the right animation
 		switch (currentAnimation) {
-			case FADE:
-				initFadeAnimation(2000,100);
-				break;
-			case SOLID:
-				initSolidColor();
-				break;
-			case BLINK:
-				// we can still use the initFadeAnimation setting the number of steps to 1
-				initFadeAnimation(500,1);
-				break;
-			case RAINBOW:
-				initFadeAnimation(1000,100);
-				break;
-			case NONE:
-				stopAnimations();
-				break;
+		case FADE:
+			initFadeAnimation(2000,100);
+			break;
+		case SINGLE_COLOR:
+			initSINGLE_COLORColor();
+			break;
+		case BLINK:
+			// we can still use the initFadeAnimation setting the number of steps to 1
+			initFadeAnimation(500,1);
+			break;
+		case RAINBOW:
+			initFadeAnimation(1000,100);
+			break;
+		case NONE:
+			stopAnimations();
+			break;
 		}
 	}
 
 	// if the animation is not of type rainbox set the color using the potentiometer
-	if (currentAnimation!=RAINBOW){
-	  float potValue = analogRead(potPin);
-	  color_hue = potValue / 1024;
+	if (currentAnimation!=RAINBOW) {
+		float potValue = analogRead(potPin);
+		color_hue = potValue / 1024;
 	}
 
 	//timing checks and led update is done inside this function
@@ -102,7 +102,7 @@ void loop() {
 boolean readButtonA(){
 	boolean buttonStatus=false;
 	boolean buttonAPressed=digitalRead(buttonAPin);
-	if (buttonAPressed&&!lastButtonAPressed){
+	if (buttonAPressed&&!lastButtonAPressed) {
 		buttonStatus=true;
 	}
 	lastButtonAPressed=buttonAPressed;
@@ -123,7 +123,7 @@ void stopAnimations(){
 	brightness=0;
 }
 
-void initSolidColor(){
+void initSINGLE_COLORColor(){
 	//set the brightness to the max
 	brightness=maxBrightness;
 }
@@ -155,7 +155,7 @@ void updateRainbowAnimation(){
 	//set the brightness to max
 	brightness=maxBrightness;
 	//reset the hue to 0 when we reach 1
-	if (color_hue>1){
+	if (color_hue>1) {
 		color_hue=0;
 	}
 }
@@ -164,18 +164,18 @@ void updateRainbowAnimation(){
 void updateLedAnimation(){
 	if (millis() - lastLedUpdateTime > animationUpdateInterval) {
 		switch (currentAnimation) {
-			case NONE:
+		case NONE:
 			break;
 
-			case FADE:
+		case FADE:
 			updateFadeAnimation();
 			break;
 
-			case BLINK:
+		case BLINK:
 			updateFadeAnimation();
 			break;
 
-			case RAINBOW:
+		case RAINBOW:
 			updateRainbowAnimation();
 			break;
 		}
