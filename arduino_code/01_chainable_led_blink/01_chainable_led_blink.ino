@@ -26,8 +26,8 @@ void setup() {
 }
 
 void loop() {
-  leds.setColorRGB(0, 255, 255, 255);
-  delay(1000);
-  leds.setColorRGB(0, 0, 0, 0);
-  delay(1000);
+	leds.setColorRGB(0, 255, 255, 255);
+	delay(1000);
+	leds.setColorRGB(0, 0, 0, 0);
+	delay(1000);
 }
