@@ -1,6 +1,6 @@
 /*
  * The following code demonstrates how to make
- * one Grove ChainableLED blink.
+ * one Grove ChainableLED blink using the fastled library.
  *
  * STEPS:
  * -Make sure you connected your chainable LED
@@ -25,10 +25,10 @@
 CRGB leds[NUM_LEDS];
 
 void setup() {
-  //start the led library
-  //this example uses an esoteric c++ mechanism called "Templates"
-  //so do not worry to much about the syntax, just make sure a line
-  //such as the line below is in your setup() if you use FastLED. 
+	//start the led library
+	//this example uses an esoteric c++ mechanism called "Templates"
+	//so do not worry to much about the syntax, just make sure a line
+	//such as the line below is in your setup() if you use FastLED.
 	FastLED.addLeds<P9813, DATA_PIN, CLOCK_PIN, RGB>(leds, NUM_LEDS);
 }
 
