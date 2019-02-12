@@ -10,39 +10,47 @@
    -press the button to switch animation
  */
 
-#include <ChainableLED.h>
+#include <FastLED.h>
 
-//connections
-int ledPin1 = 4;
-int ledPin2 = 5;
+// Connections
+#define DATA_PIN 5
+#define CLOCK_PIN 4
 
 int potPin = A0;
 
-//create a ChainableLED object
-int numLeds = 1;
-ChainableLED leds(ledPin1, ledPin2, numLeds);
+// How many leds
+#define NUM_LEDS 1
 
-// asincronous animation
-int animationDuration;
-long lastLedUpdateTime;
-int animationSteps;
-float animationUpdateInterval;
-float incrementAmountXStep;
+// An array to hold the led data
+CRGB leds[NUM_LEDS];
 
+
+// How long is the animation
+int animationDuration = 2000;
+// Keep track of last time we updated the led brightess
+long lastLedUpdateTime = 0;
+// How many steps has the animation
+int animationSteps = 40;
+// how often are we supposed to change the color of the Led
+float animationUpdateInterval=animationDuration/animationSteps;
+// is our animation moving forward or backward
 int animationDirection = 1;
-
-float maxBrightness = .5;
-float minBrightness = 0;
-float brightness;
-
-float color_hue;
-
-//button
-int buttonAPin = 2;
-boolean lastButtonAPressed;
+// the maximum & minimum brightess, mainy needed for fade animation
+int maxBrightness = 255;
+int minBrightness = 0;
+// how much do we change the colot at every step of the animation
+float incrementAmountXStep = (maxBrightness - minBrightness) / animationSteps;
+// the led brightess
+int brightness;
+int color_hue;
 
 
-//we offer multiple types of animation
+// button
+int buttonPin = 2;
+// the value that the button had in the previous loop()
+boolean lastButtonPressed;
+
+// multiple types of animation,
 enum animationType {
 	SINGLE_COLOR,
 	FADE,
@@ -50,10 +58,15 @@ enum animationType {
 	RAINBOW,
 	NONE,
 };
+
+// the animation currently active
 animationType currentAnimation=NONE;
+// how many animations do we have
 int numAnimations=5;
 
 void setup() {
+	//initialize the led
+	FastLED.addLeds<P9813, DATA_PIN, CLOCK_PIN, RGB>(leds, NUM_LEDS);
 }
 
 void loop() {
@@ -70,17 +83,17 @@ void loop() {
 		// start the right animation
 		switch (currentAnimation) {
 		case FADE:
-			initFadeAnimation(2000,100);
+			startFadeAnimation(2000,100);
 			break;
 		case SINGLE_COLOR:
-			initSINGLE_COLORColor();
+			startSINGLE_COLORColor();
 			break;
 		case BLINK:
 			// we can still use the initFadeAnimation setting the number of steps to 1
-			initFadeAnimation(500,1);
+			startFadeAnimation(500,1);
 			break;
 		case RAINBOW:
-			initFadeAnimation(1000,100);
+			startFadeAnimation(1000,100);
 			break;
 		case NONE:
 			stopAnimations();
@@ -91,7 +104,7 @@ void loop() {
 	// if the animation is not of type rainbox set the color using the potentiometer
 	if (currentAnimation!=RAINBOW) {
 		float potValue = analogRead(potPin);
-		color_hue = potValue / 1024;
+		color_hue = map(potValue, 0,1024,0,255);
 	}
 
 	//timing checks and led update is done inside this function
@@ -101,15 +114,15 @@ void loop() {
 // this function returns true when the button is pressed
 boolean readButtonA(){
 	boolean buttonStatus=false;
-	boolean buttonAPressed=digitalRead(buttonAPin);
-	if (buttonAPressed&&!lastButtonAPressed) {
+	boolean buttonPressed=digitalRead(buttonPin);
+	if (buttonPressed&&!lastButtonPressed) {
 		buttonStatus=true;
 	}
-	lastButtonAPressed=buttonAPressed;
+	lastButtonPressed=buttonPressed;
 	return(buttonStatus);
 }
 
-void initFadeAnimation(int animationDuration, int animationSteps){
+void startFadeAnimation(int animationDuration, int animationSteps){
 	animationSteps=animationSteps;
 	animationDuration=animationDuration;
 
@@ -123,7 +136,7 @@ void stopAnimations(){
 	brightness=0;
 }
 
-void initSINGLE_COLORColor(){
+void startSINGLE_COLORColor(){
 	//set the brightness to the max
 	brightness=maxBrightness;
 }
@@ -139,23 +152,23 @@ void updateFadeAnimation(){
 	}
 }
 
-void initRainbowAnimation(int rainbowDuration, int rainbowSteps){
+void startRainbowAnimation(int rainbowDuration, int rainbowSteps){
 	color_hue=0;
 	brightness=maxBrightness;
 	animationSteps=rainbowSteps;
 	animationDuration=rainbowDuration;
 
 	animationUpdateInterval=animationDuration/animationSteps;
-	incrementAmountXStep = (maxBrightness - minBrightness) / animationSteps;
+	incrementAmountXStep = 255 / animationSteps;
 }
 
 void updateRainbowAnimation(){
 	//increment the hue
-	color_hue+=1.0/animationSteps;
+	color_hue+=incrementAmountXStep*animationDirection;
 	//set the brightness to max
 	brightness=maxBrightness;
 	//reset the hue to 0 when we reach 1
-	if (color_hue>1) {
+	if (color_hue>255) {
 		color_hue=0;
 	}
 }
@@ -181,5 +194,9 @@ void updateLedAnimation(){
 		}
 		lastLedUpdateTime=millis();
 	}
-	leds.setColorHSB(0, color_hue, 1.0, brightness);
+
+	//update the led color
+	leds[0].setHSV( color_hue, 255, brightness);
+	FastLED.show();
+
 }
