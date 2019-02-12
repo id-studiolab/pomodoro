@@ -25,8 +25,8 @@ int ledPin2 = 5;
 Servo myServo;
 
 //create a ChainableLED object
-#define NUM_LEDS  1
-ChainableLED leds(ledPin1, ledPin2, NUM_LEDS);
+int numLeds = 1;
+ChainableLED leds(ledPin1, ledPin2, numLeds);
 
 void setup() {
   //start the led library
