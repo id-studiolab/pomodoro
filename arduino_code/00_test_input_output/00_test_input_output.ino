@@ -63,8 +63,8 @@ void loop() {
 	int lightIntensity = map(potValue, 0, 1024, 0, 255);
 	leds.setColorRGB(0, lightIntensity, lightIntensity, lightIntensity);
 
-	int buzzerLoudness = map(potValue, 0, 1024, 0, 180);
-	analogWrite(buzzerPin, buzzerLoudness);
+	int buzzerPitch = map(potValue, 0, 1024, 0, 20000);
+	tone(buzzerPin, buzzerPitch);
 
 	/*
 	   TODO:
