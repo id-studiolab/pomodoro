@@ -29,34 +29,41 @@ Servo myServo;
 ChainableLED leds(ledPin1, ledPin2, NUM_LEDS);
 
 void setup() {
-  //define input/output pins
-  pinMode(buttonAPin, INPUT);
-  pinMode(buttonBPin, INPUT);
-  pinMode(potPin, INPUT);
+	//define input/output pins
+	pinMode(buttonAPin, INPUT);
+	pinMode(buttonBPin, INPUT);
+	pinMode(potPin, INPUT);
 
-  //start the servo
-  myServo.attach(servoPin);
+	//start the servo
+	myServo.attach(servoPin);
 
-  //start the serial port
-  Serial.begin (9600);
+	//start the serial port
+	Serial.begin (9600);
+
+	/*
+	   depending on the version of the library which you have,
+	   you might need to use leds.init()
+	   to start the communication betwewn Arduino and the chainable led.
+	 */
+	//leds.init();
 }
 
 void loop() {
-  Serial.print("btn A: ");
-  Serial.print(digitalRead(buttonAPin));
-  Serial.print(" btn B: ");
-  Serial.print(digitalRead(buttonBPin));
-  Serial.print(" pot: ");
+	Serial.print("btn A: ");
+	Serial.print(digitalRead(buttonAPin));
+	Serial.print(" btn B: ");
+	Serial.print(digitalRead(buttonBPin));
+	Serial.print(" pot: ");
 
-  int potValue = analogRead(potPin);
-  Serial.print(analogRead(potPin));
-  Serial.println();
+	int potValue = analogRead(potPin);
+	Serial.print(analogRead(potPin));
+	Serial.println();
 
-  int servoAngle = map(potValue, 0, 1024, 0, 180);
-  myServo.write(servoAngle);
+	int servoAngle = map(potValue, 0, 1024, 0, 180);
+	myServo.write(servoAngle);
 
-  int lightIntensity = map(potValue, 0, 1024, 0, 255);
-  leds.setColorRGB(0, lightIntensity, lightIntensity, lightIntensity);
+	int lightIntensity = map(potValue, 0, 1024, 0, 255);
+	leds.setColorRGB(0, lightIntensity, lightIntensity, lightIntensity);
 
-  delay(10);
+	delay(10);
 }
