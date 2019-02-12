@@ -1,10 +1,10 @@
 /*
-   The following demonstrate how change to use the potentiometer
-   to change the color of the led, setColorHSB() function is used.
+   The following code demonstrates how to use the potentiometer
+   to change the color of the led, the setHue() function is used.
 
    STEPS:
-   -make sure you connected your chainable LED
-   to the right pin on your seeduino Lotus
+   -Make sure you connected your ChainableLED
+   to the right pin on your Seeeduino Lotus
 */
 
 #include <FastLED.h>
@@ -18,10 +18,11 @@ int potPin=A0;
 //how many leds
 #define NUM_LEDS 1
 
-//an array to hold the led data
+//an array to store the led data
 CRGB leds[NUM_LEDS];
 
 void setup() {
+  //start the led library
 	FastLED.addLeds<P9813, DATA_PIN, CLOCK_PIN, RGB>(leds, NUM_LEDS);
 }
 

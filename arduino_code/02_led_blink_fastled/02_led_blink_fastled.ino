@@ -1,14 +1,15 @@
 /*
- * The following demonstrate how to use make
- * one groove chainable Led blink.
+ * The following code demonstrates how to make
+ * one Grove ChainableLED blink.
  *
  * STEPS:
- * -make sure you connected your chainable LED
- * to the right pin on your seeduino Lotus
+ * -Make sure you connected your chainable LED
+ * to the right pin on your Seeeduino Lotus (note that
+ * a ChainableLED allocates two pins actually).
  *
  * TODO:
- * -try to attach multiple Chainable LED in series
- *  and write some code to control them
+ * -Try to attach multiple ChainableLEDs in series
+ *  and write code to control them all
  */
 
 #include <FastLED.h>
@@ -24,6 +25,10 @@
 CRGB leds[NUM_LEDS];
 
 void setup() {
+  //start the led library
+  //this example uses an esoteric c++ mechanism called "Templates"
+  //so do not worry to much about the syntax, just make sure a line
+  //such as the line below is in your setup() if you use FastLED. 
 	FastLED.addLeds<P9813, DATA_PIN, CLOCK_PIN, RGB>(leds, NUM_LEDS);
 }
 

@@ -1,14 +1,15 @@
 /*
-   The following demonstrate how to make
-   one groove chainable Led fade.
+   The following code demonstrates how to make
+   one Grove ChainableLED fade.
 
    STEPS:
-   -make sure you connected your chainable LED
-   to the right pin on your seeduino Lotus
+ * -Make sure you connected your chainable LED
+ * to the right pin on your Seeeduino Lotus (note that
+ * a ChainableLED allocates two pins actually).
 
    TODO:
-   -try to attach multiple Chainable LED in series
-    and make them all fade.
+  * -Try to attach multiple ChainableLEDs in series
+  * and make them all fade.
  */
 
 #include <FastLED.h>
@@ -26,6 +27,7 @@ CRGB leds[NUM_LEDS];
 uint16_t color=0xFF69B4;
 
 void setup() {
+  //start the led library
 	FastLED.addLeds<P9813, DATA_PIN, CLOCK_PIN, RGB>(leds, NUM_LEDS);
 	leds[0]=color;
 }

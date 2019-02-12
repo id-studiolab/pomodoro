@@ -4,7 +4,7 @@
  *
  * STEPS:
  * -Make sure you connected your chainable LED
- * to the right pin on your seeduino Lotus (note that
+ * to the right pin on your Seeeduino Lotus (note that
  * a ChainableLED allocates two pins actually).
  *
  * TODO:
