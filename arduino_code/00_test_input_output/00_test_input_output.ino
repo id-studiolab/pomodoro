@@ -1,20 +1,20 @@
 /*
  * The following code can be used
- * to test the pomodoro timer connections.
+ * to test the pomodoro timer components.
  *
  * STEPS:
  * -Change the variables according to your wiring;
- * -Open the serial port and check that the two buttons are working
- * -Verify that the servo motors moves and the light fades
- * when turning the potentiometer.
+ * -Open the serial port and check that the button is working
+ * -Turn the rotation sensor and verify that the servo motor moves,
+ * the light fades and the buzzer becomes louder/quieter
  *
  */
 #include <Servo.h>
 #include <ChainableLED.h>
 
 //connections
-int buttonAPin = 2;
-int buttonBPin = 3;
+int buttonPin = 2;
+int buzzerPin = 3;
 int potPin = A0;
 int servoPin = 6;
 
@@ -25,13 +25,13 @@ int ledPin2 = 5;
 Servo myServo;
 
 //create a ChainableLED object
-#define NUM_LEDS  1
-ChainableLED leds(ledPin1, ledPin2, NUM_LEDS);
+int numLeds = 1;
+ChainableLED leds(ledPin1, ledPin2, numLeds);
 
 void setup() {
 	//define input/output pins
-	pinMode(buttonAPin, INPUT);
-	pinMode(buttonBPin, INPUT);
+	pinMode(buttonPin, INPUT);
+	pinMode(buzzerPin, OUTPUT);
 	pinMode(potPin, INPUT);
 
 	//start the servo
@@ -49,10 +49,8 @@ void setup() {
 }
 
 void loop() {
-	Serial.print("btn A: ");
-	Serial.print(digitalRead(buttonAPin));
-	Serial.print(" btn B: ");
-	Serial.print(digitalRead(buttonBPin));
+	Serial.print("button: ");
+	Serial.print(digitalRead(buttonPin));
 	Serial.print(" pot: ");
 
 	int potValue = analogRead(potPin);
@@ -64,6 +62,14 @@ void loop() {
 
 	int lightIntensity = map(potValue, 0, 1024, 0, 255);
 	leds.setColorRGB(0, lightIntensity, lightIntensity, lightIntensity);
+
+	int buzzerLoudness = map(potValue, 0, 1024, 0, 180);
+	analogWrite(buzzerPin, buzzerLoudness);
+
+	/*
+	   TODO:
+	   -make the buzzer produce a tone
+	 */
 
 	delay(10);
 }
