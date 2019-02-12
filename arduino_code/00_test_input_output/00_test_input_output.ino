@@ -66,10 +66,5 @@ void loop() {
 	int buzzerPitch = map(potValue, 0, 1024, 0, 20000);
 	tone(buzzerPin, buzzerPitch);
 
-	/*
-	   TODO:
-	   -make the buzzer produce a tone
-	 */
-
 	delay(10);
 }

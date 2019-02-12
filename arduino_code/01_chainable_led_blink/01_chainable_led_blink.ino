@@ -1,15 +1,14 @@
 /*
- * The following code demonstrates how to make
- * one Grove ChainableLED blink.
+ * The following demonstrate how to use make
+ * one groove chainable Led blink.
  *
  * STEPS:
- * -Make sure you connected your chainable LED
- * to the right pin on your Seeeduino Lotus (note that
- * a ChainableLED allocates two pins actually).
+ * -make sure you connected your chainable LED
+ * to the right pin on your seeduino Lotus
  *
  * TODO:
- * -Try to attach multiple ChainableLEDs in series
- *  and write code to control them all
+ * -try to attach multiple Chainable LED in series
+ *  and write some code to control them
  */
 
 #include <ChainableLED.h>
@@ -20,11 +19,16 @@ int ledPin2 = 5;
 
 //create a ChainableLED object
 int numLeds = 1;
+
 ChainableLED leds(ledPin1, ledPin2, numLeds);
 
 void setup() {
-  //start the led library
-  leds.init();
+	/*
+	   depending on the version of the library which you have,
+	   you might need to use leds.init()
+	   to start the communication betwewn Arduino and the chainable led.
+	 */
+	//leds.init();
 }
 
 void loop() {
