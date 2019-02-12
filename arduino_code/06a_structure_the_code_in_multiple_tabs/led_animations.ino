@@ -48,6 +48,8 @@ void startFadeAnimation(int animationDuration, int animationSteps){
 void stopAnimations(){
 	//turn off
 	brightness=0;
+	currentAnimation=NONE;
+
 }
 
 void startSingleColor(){
