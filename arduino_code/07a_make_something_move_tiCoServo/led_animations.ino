@@ -108,11 +108,9 @@ void updateLedAnimation(){
 			break;
 		}
 		lastLedUpdateTime=millis();
-
-		//update the led color
-		leds[0].setHSV( color_hue, 255, brightness);
-		FastLED.show();
-		delay(30);
 	}
-
+	//update the led color
+	leds[0].setHSV( color_hue, 255, brightness);
+	FastLED.show();
+	delay(30);
 }

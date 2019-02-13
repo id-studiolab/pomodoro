@@ -11,7 +11,7 @@
  */
 
 #include <FastLED.h>
-#include <Servo.h>
+#include <Adafruit_TiCoServo.h>
 
 
 // Connections
@@ -35,8 +35,8 @@ boolean lastButtonPressed;
 int numAnimations=5;
 int activeMode=0;
 
-Servo myServo;
-int servoPin=6;
+Adafruit_TiCoServo myServo;
+int servoPin=10;
 
 void setup() {
 	//initialize the led
@@ -73,12 +73,12 @@ void loop() {
 			startServoSweepAnimations(0,180,2000,100);
 			break;
 		case 3: //the rainbow
-			startRainbowAnimation(3000,20);
+			startRainbowAnimation(1000,100);
 			startServoSweepAnimations(0,180,2000,4);
 			break;
 		case 4: //nothing
 			stopAnimations();
-			stopServo();
+			startServoMoveToAnimation(0,10,1);
 			break;
 		}
 	}

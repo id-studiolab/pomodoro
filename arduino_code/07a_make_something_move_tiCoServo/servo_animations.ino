@@ -74,9 +74,9 @@ void updateServo(){
 			break;
 		}
 		lastServoUpdated=millis();
-		Serial.println(servoPosition);
 	}
-
-
+	Serial.print(millis()-lastServoUpdated);
+	Serial.print(",");
+	Serial.println(servoPosition);
 	myServo.write(servoPosition);
 }
