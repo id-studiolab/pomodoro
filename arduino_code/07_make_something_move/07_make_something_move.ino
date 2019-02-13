@@ -70,12 +70,15 @@ void loop() {
 			break;
 		case 2: //the fade
 			startFadeAnimation(2000,100);
+			startServoSweepAnimations(0,180,2000,100);
 			break;
 		case 3: //the rainbow
 			startRainbowAnimation(1000,100);
+			startServoSweepAnimations(0,180,2000,4);
 			break;
 		case 4: //nothing
 			stopAnimations();
+			stopServo();
 			break;
 		}
 	}

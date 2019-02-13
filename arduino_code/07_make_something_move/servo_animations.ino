@@ -1,6 +1,6 @@
 //some variables to animate the servo motor.
 int servoPosition;
-int servoDirection;
+int servoDirection=1;
 
 int servoAnimationDuration;
 int servoUpdateInterval;
@@ -29,12 +29,13 @@ int startServoSweepAnimations(int min, int max, int duration, int steps ){
 	servoMax=max;
 	servoUpdateInterval=duration/steps;
 	servoStepSize= abs(servoMax-servoMin)/steps;
+	Serial.println(servoStepSize);
 }
 
 void updateServoSweep(){
 	servoPosition+=servoStepSize*servoDirection;
 	if (servoPosition > servoMax || servoPosition < servoMin) {
-		animationDirection *= -1;
+		servoDirection *= -1;
 		//make sure the value falls between the desired range
 		servoPosition=constrain(servoPosition,servoMin,servoMax);
 	}
@@ -73,8 +74,9 @@ void updateServo(){
 			break;
 		}
 		lastServoUpdated=millis();
+		Serial.println(servoPosition);
 	}
 
-	Serial.println(servoPosition);
+
 	myServo.write(servoPosition);
 }
