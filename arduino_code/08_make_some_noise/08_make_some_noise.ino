@@ -55,7 +55,7 @@ void loop() {
 	//if the button is pressed we change animation
 	if (readButtonA()) {
 		//check that we are within the range of the the animations we programmed
-		if (activeMode<numAnimations-1) {
+		if (activeMode<numAnimations) {
 			activeMode++;
 		}else{
 			activeMode=0;
@@ -91,7 +91,7 @@ void loop() {
 	}
 
 	// if the animation is not of type rainbox set the color using the potentiometer
-	if (activeMode!=3) {
+	if (activeMode!=4) {
 		int potValue = analogRead(potPin);
 		setHue(map(potValue, 0,1024,0,255));
 	}
