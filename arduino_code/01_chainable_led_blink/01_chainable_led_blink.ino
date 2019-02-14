@@ -13,7 +13,7 @@
 
 #include <ChainableLED.h>
 
-//connections
+//connections of the ChainableLED
 int ledPin1 = 4;
 int ledPin2 = 5;
 
