@@ -1,0 +1,21 @@
+# class 03 - Colour fade
+[slide 1]
+
+Hi guys! here we are again!
+In the previous part of this tutorial we saw how to use the fastled library to blink an LED, now we are going to see how we can make that same led fade in brightness. Ready? Let's go!
+
+[live code]
+[starting from the led_blink we modify it so that the led will fade]
+[show how we can use variables to store hexadecimal colour codes]
+
+[slide 1]
+Ok, so things are starting to be a little more complex, but also we are starting to gain much more control on the type of feedback that we can produce with our box. Let's try to make things a bit more interesting.
+
+[slide 2]
+I'd like you to try to read the value of the potentiometer and use it to change the colour of the led which is fading.
+
+here some hints to help you with the challenge:
+1) You can use the analogRead() function to read values from analogue sensors... If you don't remember what it is, maybe you can go to the Arduino reference and look up an example.
+2) To change the colour it might be easier to move to HSV colours (hue, saturation, brightness ) instead of using the classical RGB colours. You can try using the setHue(hue) function to change the tint of the light.
+
+Once you are done with the challenge, go to the next video and we will at a possible way of solving the exercise together.
