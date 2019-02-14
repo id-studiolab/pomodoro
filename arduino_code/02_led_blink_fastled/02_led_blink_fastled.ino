@@ -8,8 +8,8 @@
  * a ChainableLED allocates two pins actually).
  *
  * TODO:
- * -Try to attach multiple ChainableLEDs in series
- *  and write code to control them all
+ * -Now that you know how to control one led, can you make it
+ * fade in brightess?
  */
 
 #include <FastLED.h>
@@ -34,7 +34,7 @@ void setup() {
 
 void loop() {
 	// Turn the LED on, then pause
-	leds[0].setRGB( 255, 255, 2255);
+	leds[0].setRGB( 255, 255, 255);
 	FastLED.show();
 	delay(500);
 	// Now turn the LED off, then pause

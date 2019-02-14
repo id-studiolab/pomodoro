@@ -3,11 +3,11 @@
  * one groove chainable Led blink.
  *
  * STEPS:
- * -make sure you connected your chainable LED
+ * -Make sure you connected your chainable LED
  * to the right pin on your seeduino Lotus
  *
  * TODO:
- * -try to attach multiple Chainable LED in series
+ * -Try to attach multiple Chainable LED in series
  *  and write some code to control them
  */
 

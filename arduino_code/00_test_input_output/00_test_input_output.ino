@@ -41,7 +41,7 @@ void setup() {
 	Serial.begin (9600);
 
 	/*
-	   depending on the version of the library which you have,
+	   Depending on the version of the library which you have,
 	   you might need to use leds.init()
 	   to start the communication betwewn Arduino and the chainable led.
 	 */
