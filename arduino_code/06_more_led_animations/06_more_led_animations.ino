@@ -1,56 +1,55 @@
 /*
    The following code demonstrates how to create beautiful
-   asynchronous LEDs fading animations and how to switch between
-   the different modalities
+   asynchronous LED fading animations and how to switch between
+   different modes of animation
 
    STEPS:
-   -make sure you connected your chainable LED
-   to the right pin on your Seeeduino Lotus board
-   -use the potentiometer to change color
-   -press the button to switch animation
+   -Make sure you connect your ChainableLED
+   to the right pin on your Seeeduino Lotus
+   -Use the potentiometer to change color
+   -Press the button to change the animation
  */
 
 #include <FastLED.h>
 
-// Connections
+//connect the potentiometer to pin A0
+int potPin = A0;
+
+//connections of the ChainableLED
 #define DATA_PIN 5
 #define CLOCK_PIN 4
 
-int potPin = A0;
-
-// How many leds
+//how many leds
 #define NUM_LEDS 1
 
-// An array to hold the led data
+//an array to hold the led data
 CRGB leds[NUM_LEDS];
 
-
-// How long is the animation
+//how long is the animation
 int animationDuration = 2000;
-// Keep track of last time we updated the led brightess
+//keep track of last time we updated the led brightess
 long lastLedUpdateTime = 0;
-// How many steps has the animation
+//how many steps has the animation
 int animationSteps = 40;
-// how often are we supposed to change the color of the Led
+//how often are we supposed to change the color of the Led
 float animationUpdateInterval=animationDuration/animationSteps;
-// is our animation moving forward or backward
+//is our animation moving forward or backward
 int animationDirection = 1;
-// the maximum & minimum brightess, mainy needed for fade animation
+//the maximum & minimum brightess, mainy needed for fade animation
 int maxBrightness = 255;
 int minBrightness = 0;
-// how much do we change the colot at every step of the animation
+//how much do we change the color at every step of the animation
 float incrementAmountXStep = (maxBrightness - minBrightness) / animationSteps;
-// the led brightess
+//the led brightess
 int brightness;
 int color_hue;
 
-
-// button
+//button
 int buttonPin = 2;
-// the value that the button had in the previous loop()
+//the value that the button had in the previous loop()
 boolean lastButtonPressed;
 
-// multiple types of animation,
+//multiple types of animation
 enum animationType {
 	SINGLE_COLOR,
 	FADE,
@@ -59,13 +58,13 @@ enum animationType {
 	NONE,
 };
 
-// the animation currently active
+//the animation currently active
 animationType currentAnimation=NONE;
-// how many animations do we have
+//how many animations do we have
 int numAnimations=5;
 
 void setup() {
-	//initialize the led
+	//start the led library
 	FastLED.addLeds<P9813, DATA_PIN, CLOCK_PIN, RGB>(leds, NUM_LEDS);
 }
 
@@ -82,14 +81,14 @@ void loop() {
 
 		// start the right animation
 		switch (currentAnimation) {
-		case FADE:
-			startFadeAnimation(2000,100);
-			break;
 		case SINGLE_COLOR:
 			startSINGLE_COLORColor();
 			break;
+		case FADE:
+			startFadeAnimation(2000,100);
+			break;
 		case BLINK:
-			// we can still use the initFadeAnimation setting the number of steps to 1
+			//we can still use the initFadeAnimation setting the number of steps to 1
 			startFadeAnimation(500,1);
 			break;
 		case RAINBOW:
@@ -101,7 +100,7 @@ void loop() {
 		}
 	}
 
-	// if the animation is not of type rainbox set the color using the potentiometer
+	//if the animation is not of type rainbox set the color using the potentiometer
 	if (currentAnimation!=RAINBOW) {
 		float potValue = analogRead(potPin);
 		color_hue = map(potValue, 0,1024,0,255);
@@ -111,7 +110,7 @@ void loop() {
 	updateLedAnimation();
 }
 
-// this function returns true when the button is pressed
+//this function returns true when the button is pressed
 boolean readButtonA(){
 	boolean buttonStatus=false;
 	boolean buttonPressed=digitalRead(buttonPin);
@@ -173,7 +172,6 @@ void updateRainbowAnimation(){
 	}
 }
 
-
 void updateLedAnimation(){
 	if (millis() - lastLedUpdateTime > animationUpdateInterval) {
 		switch (currentAnimation) {
@@ -198,5 +196,4 @@ void updateLedAnimation(){
 	//update the led color
 	leds[0].setHSV( color_hue, 255, brightness);
 	FastLED.show();
-
 }
