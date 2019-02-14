@@ -3,7 +3,7 @@
  * one Grove ChainableLED blink using the fastled library.
  *
  * STEPS:
- * -Make sure you connected your chainable LED
+ * -Make sure you connected your ChainableLED
  * to the right pin on your Seeeduino Lotus (note that
  * a ChainableLED allocates two pins actually).
  *
@@ -14,7 +14,7 @@
 
 #include <FastLED.h>
 
-//connections
+//connections of the ChainableLED
 #define DATA_PIN 5
 #define CLOCK_PIN 4
 
