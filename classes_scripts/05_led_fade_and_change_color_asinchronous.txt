@@ -4,24 +4,25 @@
 Hi guys, welcome back to our video class! The Last challance I gave was definetly the most challenging so far. But I'm sure that most of you managed to solve it.
 Let's try and solve the challenge together now.
 
+[slide 2]
+In the previous exercise we started seeing that when you use delays in your code, the program stops.
+And if we use long delays or you have delays inside of a for loop, we start experiencing problems if we want to combine two activities that needs to be perfectly timed.
 
-[go to IDE - live coding]
-[first define the variables]
-[read the value from the potentiometer]
-[use the map function to scale the value between 0-255]
-[use the leds[].sethue(hue) function]
+The graph up here, is basically a picture of our previous code, we have the fading happening and we fade only once per loop. and as you can see in this interval of time we can only execute the code in the loop function 3 times.
 
+Now we are going to try to solve the challenge in a different way. We want to execute the loop function as many time as possible in the same amount of time. And by counting how much time has passed then we will update the value of the brightness.
+The good aspect of this tecnique is that at every loop we can also check on other sensors like the potentiometer, a button or anything else. Hence we have the feeling that the Arduino is doing multiple things at the same time. But how do we keep track of time?
 
-Super easy right? let's upload this code and see if everything works as we expected.
-[upload - switch to prototype view]
+[slide 3]
+That is not very difficult, we can use the millis() function for that. We can use this function like a clock to know how much time has passed since the last time we reboot our board. This value is expressed in milliseconds.
 
-Ok, so it seems like we are able to chance the color of the led by turning the potentiometer, but actually the color changes only when the fade cycle ends. And this is of course because of how we wrote our code:
-[switch to IDE]
-[live comments on the code to explain sinchronous mechanic]
-[stress on the fact that if you have delays in your code Arduino stops and it becomes very difficult to control multiple sensors/actuators at the same time]
+[slide 4]
+So, let's assume that we want to update the led brightness at regular intervals of time, we can use the millis to get out current position in time, in this graph is the red dot.
+Then, every time we update the value we save a timestamp or a checkpoint.
+Eventually we just need to verify if the interval of time has passed.
 
-Is there a better way to do this exercise?
-[switch to slides - slide 2]
-Here we go with your next challenge, can you modify this code to make the led fade and at the same time be able to update the colour of the led as soon as you turn the potentiometer?
-I have a small hint for you, Arduino IDE has a immense tutorial section, open the example called blink without delay and have a look at how the millis() function is used in the sketch to keep track of time.
-In the next video we will see how to completely drop the delay() function and learn how to use millis() to time our Arduino programs, but still , now it is your time to try solving the challange without looking at the solution. good luck, and see you in a bit.
+So we know that the time passed is equals to currenttime - last update time. and if this is bigger than interval, it is time to update the brightness of the led again.
+
+It might still sound a bit confusing, but let's try to put this into code.
+
+[open IDE and live coding]
