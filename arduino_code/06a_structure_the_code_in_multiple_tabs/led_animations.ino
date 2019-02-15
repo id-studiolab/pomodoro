@@ -2,8 +2,11 @@
    The is a self-contained file that has nicely packaged functionality
    to make LEDs shine in various animation styles. You can open it as a
    tab to another Arduino program (that contains the setup and loop functions.
+
+   Notice that the pin definition and the initialization of the ledstrip is still
+   happening inside the main tab of the scketch before and inside the setup() fucntion
  */
- 
+
 //how long is the animation
 int animationDuration = 2000;
 //keep track of last time we updated the led brightness
