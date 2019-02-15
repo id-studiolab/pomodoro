@@ -26,26 +26,44 @@ int potPin=A0;
 //an array to store the led data
 CRGB leds[NUM_LEDS];
 
+ 
+int brightness=0;
+long lastTimeUpdate=0;
+
+int fadeDuration=2000;
+int steps=100;
+
+int minBrightness=0;
+int maxBrightness=255;
+
+int brightnessIncrement=(maxBrightness-minBrightness)/steps;
+int stepDuration=fadeDuration/steps;
+
+int fadeDirection=1;
+
 void setup() {
 	//start the led library
 	FastLED.addLeds<P9813, DATA_PIN, CLOCK_PIN, RGB>(leds, NUM_LEDS);
 }
 
 void loop() {
+
+  if(millis()-lastTimeUpdate>stepDuration){
+    brightness=brightness+brightnessIncrement*fadeDirection;
+
+    if (brightness>maxBrightness || brightness< minBrightness){
+      fadeDirection=fadeDirection*-1;
+    }
+
+    brightness=constrain(brightness,minBrightness,maxBrightness);
+    lastTimeUpdate=millis();
+  }
+  
 	float potValue = analogRead(potPin);
 	int hue = map (potValue,0,1024,0,255);
 
 	leds[0].setHue(hue);
-
-	for (float i = 0; i < 255; i++) {
-		FastLED.setBrightness(i);
-		FastLED.show();
-		delay(10);
-	}
-
-	for (float i = 255; i > 0; i--) {
-		FastLED.setBrightness(i);
-		FastLED.show();
-		delay(10);
-	}
+	FastLED.setBrightness(brightness);
+	FastLED.show();
+	
 }

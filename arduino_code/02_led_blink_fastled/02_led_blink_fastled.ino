@@ -33,12 +33,17 @@ void setup() {
 }
 
 void loop() {
-	// Turn the LED on, then pause
-	leds[0].setRGB( 255, 255, 255);
-	FastLED.show();
-	delay(500);
-	// Now turn the LED off, then pause
-	leds[0].setRGB( 0, 0, 0);
-	FastLED.show();
-	delay(500);
+  leds[0].setRGB( 10, 10, 150);
+
+  for (int i=0; i< 255; i++){
+    FastLED.setBrightness(i);
+    FastLED.show();
+    delay(5);
+  }
+
+  for (int i=255; i> 0; i--){
+    FastLED.setBrightness(i);
+    FastLED.show();
+    delay(5);
+  }
 }

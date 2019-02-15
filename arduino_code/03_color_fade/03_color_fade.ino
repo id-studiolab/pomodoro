@@ -23,16 +23,20 @@
 //an array to hold the led data
 CRGB leds[NUM_LEDS];
 
-CRGB warm_pink = 0xFF69B4;
+int potPin=A0;
 
 void setup() {
 	//start the led library
 	FastLED.addLeds<P9813, DATA_PIN, CLOCK_PIN, RGB>(leds, NUM_LEDS);
-	//set color of the one and only led
-	leds[0]=warm_pink;
 }
 
 void loop() {
+
+  int potValue=analogRead(potPin);
+  int hueValue=map(potValue,0,1024,0,255);
+  leds[0].setHue(hueValue);
+
+  
 	for (int i = 0; i < 255; i++) {
 		FastLED.setBrightness(i);
 		FastLED.show();
