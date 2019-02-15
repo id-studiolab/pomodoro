@@ -1,8 +1,8 @@
 # class 04 - Led fade and change colour
 [slide 1]
 
-So, how did it go with your exercise? it wasnt't too diffucult of a task right?
-let's see together a possible way in which you could have solved your challenge.
+So, how did it go with your exercise? I hope you managed to puzzle the solution together and that it wasnt't too difficult of a task, right?
+Let's review together a possible way in which you could have solved your challenge.
 
 [go to IDE - live coding]
 [first define the variables]
@@ -10,17 +10,18 @@ let's see together a possible way in which you could have solved your challenge.
 [use the map function to scale the value between 0-255]
 [use the leds[].sethue(hue) function]
 
-
 Super easy right? let's upload this code and see if everything works as we expected.
 [upload - switch to prototype view]
 
-Ok, so it seems like we are able to chance the color of the led by turning the potentiometer, but actually the color changes only when the fade cycle ends. And this is of course because of how we wrote our code:
+Ok, so it seems like we are able to change the color of the led by turning the potentiometer. Now, actually the color changes only when the fade cycle ends. And this is of course because of how we wrote our code:
 [switch to IDE]
 [live comments on the code to explain sinchronous mechanic]
 [stress on the fact that if you have delays in your code Arduino stops and it becomes very difficult to control multiple sensors/actuators at the same time]
 
 Is there a better way to do this exercise?
+
 [switch to slides - slide 2]
-Here we go with your next challenge, can you modify this code to make the led fade and at the same time be able to update the colour of the led as soon as you turn the potentiometer?
+Here we go with your next challenge, can you modify this code to make the led fade and at the same time be able to update the colour of the led directly as you turn the potentiometer?
 I have a small hint for you, Arduino IDE has a immense tutorial section, open the example called blink without delay and have a look at how the millis() function is used in the sketch to keep track of time.
-In the next video we will see how to completely drop the delay() function and learn how to use millis() to time our Arduino programs, but still , now it is your time to try solving the challange without looking at the solution. good luck, and see you in a bit.
+
+In the next video we will see how to completely drop the delay() function and learn how to use millis() to time our Arduino programs. But first, now it is your time to try to solve the challange without looking at the solution. good luck, and see you in a bit.
