@@ -1,0 +1,27 @@
+# class 05 - Led fade and change colour asinchronous
+[slide 1]
+
+Hi guys, welcome back to our video class! The Last challance I gave was definetly the most challenging so far. But I'm sure that most of you managed to solve it.
+Let's try and solve the challenge together now.
+
+
+[go to IDE - live coding]
+[first define the variables]
+[read the value from the potentiometer]
+[use the map function to scale the value between 0-255]
+[use the leds[].sethue(hue) function]
+
+
+Super easy right? let's upload this code and see if everything works as we expected.
+[upload - switch to prototype view]
+
+Ok, so it seems like we are able to chance the color of the led by turning the potentiometer, but actually the color changes only when the fade cycle ends. And this is of course because of how we wrote our code:
+[switch to IDE]
+[live comments on the code to explain sinchronous mechanic]
+[stress on the fact that if you have delays in your code Arduino stops and it becomes very difficult to control multiple sensors/actuators at the same time]
+
+Is there a better way to do this exercise?
+[switch to slides - slide 2]
+Here we go with your next challenge, can you modify this code to make the led fade and at the same time be able to update the colour of the led as soon as you turn the potentiometer?
+I have a small hint for you, Arduino IDE has a immense tutorial section, open the example called blink without delay and have a look at how the millis() function is used in the sketch to keep track of time.
+In the next video we will see how to completely drop the delay() function and learn how to use millis() to time our Arduino programs, but still , now it is your time to try solving the challange without looking at the solution. good luck, and see you in a bit.

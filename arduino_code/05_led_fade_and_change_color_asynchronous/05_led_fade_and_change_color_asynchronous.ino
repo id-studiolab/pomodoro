@@ -5,6 +5,9 @@
    STEPS:
    -Make sure you connect your ChainableLED
    to the right pin on your Seeeduino Lotus
+
+   TODO:
+   - Design and code an other animation wich doesn't use delay: blink, rainbow, etc...
  */
 
 #include <FastLED.h>
