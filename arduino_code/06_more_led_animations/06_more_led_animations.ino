@@ -27,20 +27,20 @@ CRGB leds[NUM_LEDS];
 
 //how long is the animation
 int animationDuration = 2000;
-//keep track of last time we updated the led brightess
+//keep track of last time we updated the led brightness
 long lastLedUpdateTime = 0;
 //how many steps has the animation
 int animationSteps = 40;
-//how often are we supposed to change the color of the Led
-float animationUpdateInterval=animationDuration/animationSteps;
+//how often are we supposed to change the color of the led
+float animationUpdateInterval = animationDuration/animationSteps;
 //is our animation moving forward or backward
 int animationDirection = 1;
-//the maximum & minimum brightess, mainy needed for fade animation
+//the maximum & minimum brightness, mainy needed for fade animation
 int maxBrightness = 255;
 int minBrightness = 0;
 //how much do we change the color at every step of the animation
 float incrementAmountXStep = (maxBrightness - minBrightness) / animationSteps;
-//the led brightess
+//the led brightness
 int brightness;
 int color_hue;
 
@@ -74,15 +74,15 @@ void loop() {
 		//check that we are within the range of the the animations we programmed
 		if (currentAnimation<numAnimations-1) {
 			//since currentAnimation is a ENUM we cannot simply do currentAnimation++
-			currentAnimation= (animationType)(currentAnimation + 1);
+			currentAnimation = (animationType)(currentAnimation + 1);
 		}else{
-			currentAnimation=0;
+			currentAnimation = 0;
 		}
 
 		// start the right animation
 		switch (currentAnimation) {
 		case SINGLE_COLOR:
-			startSINGLE_COLORColor();
+			startSingleColor();
 			break;
 		case FADE:
 			startFadeAnimation(2000,100);
@@ -114,7 +114,9 @@ void loop() {
 boolean readButtonA(){
 	boolean buttonStatus=false;
 	boolean buttonPressed=digitalRead(buttonPin);
-	if (buttonPressed&&!lastButtonPressed) {
+	
+  //if the button is now down and the last time through the loop() is was not
+	if (buttonPressed && !lastButtonPressed) {
 		buttonStatus=true;
 	}
 	lastButtonPressed=buttonPressed;
@@ -125,7 +127,7 @@ void startFadeAnimation(int animationDuration, int animationSteps){
 	animationSteps=animationSteps;
 	animationDuration=animationDuration;
 
-	//recal the steps and the indervals
+	//recall the steps and the intervals
 	animationUpdateInterval=animationDuration/animationSteps;
 	incrementAmountXStep = (maxBrightness - minBrightness) / animationSteps;
 }
@@ -135,49 +137,49 @@ void stopAnimations(){
 	brightness=0;
 }
 
-void startSINGLE_COLORColor(){
+void startSingleColor() {
 	//set the brightness to the max
 	brightness=maxBrightness;
 }
 
-void updateFadeAnimation(){
+void updateFadeAnimation() {
 	//increment the value of brightness
 	brightness = brightness + incrementAmountXStep * animationDirection;
 	//check that we havn't reached the extreme
 	if (brightness > maxBrightness || brightness < minBrightness) {
 		animationDirection *= -1;
 		//make sure the value falls between the desired range
-		brightness=constrain(brightness,minBrightness,maxBrightness);
+		brightness = constrain(brightness,minBrightness, maxBrightness);
 	}
 }
 
 void startRainbowAnimation(int rainbowDuration, int rainbowSteps){
-	color_hue=0;
-	brightness=maxBrightness;
-	animationSteps=rainbowSteps;
-	animationDuration=rainbowDuration;
+	color_hue = 0;
+	brightness = maxBrightness;
+	animationSteps = rainbowSteps;
+	animationDuration = rainbowDuration;
 
-	animationUpdateInterval=animationDuration/animationSteps;
+	animationUpdateInterval = animationDuration/animationSteps;
 	incrementAmountXStep = 255 / animationSteps;
 }
 
-void updateRainbowAnimation(){
+void updateRainbowAnimation() {
 	//increment the hue
-	color_hue+=incrementAmountXStep*animationDirection;
+	color_hue += incrementAmountXStep*animationDirection;
 	//set the brightness to max
-	brightness=maxBrightness;
+	brightness = maxBrightness;
 	//reset the hue to 0 when we reach 1
-	if (color_hue>255) {
-		color_hue=0;
+	if (color_hue > 255) {
+		color_hue = 0;
 	}
 }
 
-void updateLedAnimation(){
+void updateLedAnimation() {
 	if (millis() - lastLedUpdateTime > animationUpdateInterval) {
 		switch (currentAnimation) {
 		case NONE:
 			break;
-
+      
 		case FADE:
 			updateFadeAnimation();
 			break;
@@ -194,6 +196,6 @@ void updateLedAnimation(){
 	}
 
 	//update the led color
-	leds[0].setHSV( color_hue, 255, brightness);
+	leds[0].setHSV(color_hue, 255, brightness);
 	FastLED.show();
 }
