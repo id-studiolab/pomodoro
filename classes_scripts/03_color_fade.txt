@@ -2,7 +2,7 @@
 [slide 1]
 
 Hi guys! here we are again!
-In the previous part of this tutorial we saw how to use the fastled library to blink an LED, now we are going to see how we can make that same led fade in brightness. Ready? Let's go!
+In the previous part of this tutorial we saw how to use the fastled library to blink a LED, now we are going to see how we can make that same led fade in brightness. Ready? Let's go!
 
 [live code]
 [starting from the led_blink we modify it so that the led will fade]
@@ -19,4 +19,4 @@ here some hints to help you with the challenge:
 Remember, that when you assembled your kit you connected the potentiometer to pin A0. 
 2) To change the colour it might be easier to move to HSV colours (hue, saturation, brightness ) instead of using the classical RGB colours. You can try using the setHue(hue) function to change the tint of the light.
 
-Once you are done with the challenge, go to the next video and we will at a possible way of solving the exercise together.
+Once you are done with the challenge, go to the next video and we will look at the solution together.

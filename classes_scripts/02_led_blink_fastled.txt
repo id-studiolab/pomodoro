@@ -2,29 +2,29 @@
 
 Hi guys! Welcome back!
 In the previous class, we saw how to make a LED blink using the chainable LED library.
-That library, written by the manufacturer of the chainable LED groove component (seed studio), works really well for simple things; but if you start using it extensively you will notice that it is very minimal and if you want to start creating very custom animations you will have to write a lot of custom code, for example, to convert a colour from RGB to HSB or to just adjust the brightness.
+That library, written by Seeedstudio the manufacturer of the chainable LED Grove component, works really well for simple things; but if you start using it extensively you will notice that it is very minimal and if you want to start creating  custom animations you will have to write a lot of additional code, for example, to convert a colour from RGB to HSB or to just adjust the brightness.
 
-Since the focus of this class is actually to equip you with all the best tools to program custom feedbacks I thought to just introduce you, from the beginning, a more advanced library to control LED which is calLED FastLED.
+Since the focus of this class is actually to equip you with all the best tools to program expressive feedback I thought to introduce you, from the beginning, to a more advanced library to control LED. It which is called: FastLED.
 
 [slide 1]
-FastLED Library is probably the best lo
-library you can use to program colourful LED animations. At this link, you can find all the documentation about the library.
+FastLED Library is probably the best library you can use to program colourful LED animations. At this link, you can find all the documentation about the library.
 [click on the link - open browser]
-One nice aspect of the library is that is doesn't only support the chainable LED which are part of your kit, but many more model of digitally controllable LEDs and LED strips.
+One nice aspect of the library is that is doesn't only support the chainable LED which are part of your kit, but many more models of digitally controllable LEDs and LED strips.
 This means that if you are programming some LED patterns using this library and at some point, you decide that you have to change the type of LED you can just modify few lines of code, and your prototype will work exactly in the same way.
 The other advantage of using fastLED is that out if the box it supports HSV colours which is quite handy sometimes... we will see this later.
-Lastly, this library does everything in a very efficient way using the liest amount of Arduino resources as possible. Which is very important when you will you start driving a couple of hundreds LED.
+Lastly, this library does everything in a very efficient way using the least amount of Arduino resources as possible. Which is very important when you want to control a couple hundreds of LEDs.
 
 [Go to IDE]
 Ok, so let's give this library a try, first of all, as we did before for the chainable LED library we have to install the library using the library manager.
-Inside your Arduino IDE, you can go to sketch, include library, library manager and search for “fastLED”. Once you find it just select it and click install.
-Now we should be ready to go. Let's open the sketch calLED 02_LED_blink_fastLED.ino and have a look at the differences between using the fastLED library VS the chainable LED library.
+Inside your Arduino IDE, you can go to the sketch menu, include library, library manager and search for “fastLED”. Once you find it just select it and click install.
+Now you should be ready to go. Let's open the sketch calLED 02_LED_blink_fastLED.ino and have a look at the differences between using the fastLED library VS the chainable LED library.
 
 [live comments on the code]
 [upload the code]
 [demonstrate how to use setBrightness()]
 
-Alright! I think now it is clear why I like the fastLED library a lot and why you should get used to it. Now that you know how to make the LED blink, I'd like to give you a new challenge...
+Alright! I think now it is clear why I like the fastLED library a lot. Now that you know how to make the LED blink, I'd like to give you a new challenge...
+
 [slide 3]
-Can you make the LED fade in and fade out? I give you a small hint: maybe you can use the “for loop” construct to solve this challenge.
-Once you think you made it go to the next video and we will look at the solution together.
+Can you make the LED fade in and fade out? I give you a small hint: maybe you can use the “for loop” control structure to solve this challenge.
+Once you think you have that, go to the next video and we will look at the solution together.
