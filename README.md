@@ -1,9 +1,17 @@
-# pomodoro
-An example project for Interaction &amp; Electronics - programming aesthetic interactions
+# Programming advanced feedback with Arduino
+In this repository you will find all the materials related to the online class.
+Here the list of classes and related resources:
 
 
-## here the list of exercises present in the repository
-- **01_chainable_led_blink** - use the chainable led library to blink one led
+### Class 01: Chainable_led_blink
+Use the chainable led library to blink one led
+[[VIDEO]](https://youtu.be/VUZ3verZ18k)
+[[CODE]](https://github.com/id-studiolab/pomodoro/blob/master/arduino_code/01_chainable_led_blink/01_chainable_led_blink.ino)
+[SLIDES] 
+
+
+
+
 - **02_led_blink_fastled** - blink the led using the fastled library
 - **03_single_color_fade** - make the led fade
 - **04_led_fade_and_change_color** - use the potentiometer to change the color of the led while it is fading; Notice that the color changes only when the loop restart.
