@@ -2,7 +2,7 @@
 // -- Libraries --
 // ---------------
 #include <Servo.h>
-#include <ChainableLED.h>
+#include <FastLED.h>
 
 
 // ---------------
@@ -10,8 +10,7 @@
 // ---------------
 
 //pin Variables
-const int buttonAPin = 2;
-const int buttonBPin = 3;
+const int buttonPin = 2;
 const int potPin = A0;
 const int servoPin = 6;
 
@@ -21,26 +20,30 @@ const int ledPin2 = 5;
 //create a servo object
 Servo myServo;
 
-//create a ChainableLED object
-#define NUM_LEDS  1
-ChainableLED leds(ledPin1, ledPin2, NUM_LEDS);
+// Connections
+#define DATA_PIN 5
+#define CLOCK_PIN 4
+
+// How many leds
+#define NUM_LEDS 1
+
+// An array to hold the led data
+CRGB leds[NUM_LEDS];
+
 
 // State Machine Variables
 const int stateIdle = 0;
 const int stateWork = 1;
-const int stateAlarm = 2;
-const int stateShort_break = 3;
-const int stateLong_break = 4;
-const int stateAlarm2 = 5;
+const int stateBreakAlarm = 2;
+const int stateShortBreak = 3;
+const int stateLongBreak = 4;
+const int stateWorkAlarm = 5;
 
 int currentState = stateIdle;
 
 // Timer variables
 unsigned long timerDuration;
 unsigned long lastTimerStarted;
-
-int preAlarmLevel = 0;
-int alarmlevel = 0;
 
 // const long focusWorkDuration=1000*60*20; //20 minutes
 // const long shortBreakDuration=1000*60*5; //20 minutes
@@ -51,7 +54,7 @@ const long shortBreakDuration=5000; //20 minutes
 const long longBreakDuration=5000; //20 minutes
 
 //buttons Variables
-boolean lastButtonAPressed;
+boolean lastButtonPressed;
 
 //break Variables
 int nBreaks=0;
@@ -62,33 +65,37 @@ int nBreaks=0;
 
 void setup() {
 	//define input/output pins
-	pinMode(buttonAPin, INPUT);
-	pinMode(buttonBPin, INPUT);
-	pinMode(potPin, INPUT);
-
-	//start the servo
+	pinMode(buttonPin, INPUT);
+	//initialize the led
+	FastLED.addLeds<P9813, DATA_PIN, CLOCK_PIN, RGB>(leds, NUM_LEDS);
+	//initialize the servo
 	myServo.attach(servoPin);
+	startServoMoveToAnimation(0,0,1);
 
-	//start the serial port
-	Serial.begin (9600);
+	Serial.begin(9600);
 }
 
 void loop() {
+
 	updateStateMachine();
+	//timing checks and led update is done inside this function
 	updateLedAnimation();
+	updateServo();
+	updateMelody();
 }
 
 // ----------------
 // -- Conditions --
 // ----------------
 
-boolean buttonPress() {
+// this function returns true when the button is pressed
+boolean buttonPress(){
 	boolean buttonStatus=false;
-	boolean buttonAPressed=digitalRead(buttonAPin);
-	if (buttonAPressed&&!lastButtonAPressed) {
+	boolean buttonPressed=digitalRead(buttonPin);
+	if (buttonPressed&&!lastButtonPressed) {
 		buttonStatus=true;
 	}
-	lastButtonAPressed=buttonAPressed;
+	lastButtonPressed=buttonPressed;
 	return(buttonStatus);
 }
 
@@ -114,10 +121,10 @@ void startTimer(int msec) {
 	lastTimerStarted = millis();
 }
 
-void updateServo(){
+void recalculateServoPosition(){
 	int timeRemaining=lastTimerStarted+timerDuration-millis();
 	int servoPosition=map(timeRemaining, 0,timerDuration,0,180);
-	myServo.write(servoPosition);
+	startServoMoveToAnimation(servoPosition, 0, 1);
 }
 
 
@@ -143,70 +150,70 @@ void updateStateMachine() {
 	case stateIdle:
 		if (buttonPress()) {
 			startTimer(focusWorkDuration);
-			setHSB(255,0,255);
-			initFadeAnimation(1000,100);
+			setRGB(255,255,255);
+			startFadeAnimation(1000,100);
 			goToState(stateWork);
-			break;
 		}
 		break;
 
 	case stateWork:
-		updateServo();
+		recalculateServoPosition();
 		if (timerExpired()) {
-			goToState(stateAlarm);
-			setHSB(100,100,255);
-			initFadeAnimation(500,1);
-			break;
-		}
-		if (buttonPress()) {
-			goToState(stateIdle);
-			break;
+			goToState(stateBreakAlarm);
+			startHappyMelody(1000,true);
+			startServoSweepAnimation(60,120,200,10);
+			setRGB(22,200,22);
+			startFadeAnimation(500,1);
 		}
 		break;
 
-	case stateAlarm:
+	case stateBreakAlarm:
 		if (buttonPress()) {
 			nBreaks++;
 			if (checkBreak()<4) {
 				startTimer(shortBreakDuration);
-				goToState(stateShort_break);
+				goToState(stateShortBreak);
 				setBrightness(100);
-				initRainbowAnimation(5000,20);
-				break;
+				startRainbowAnimation(5000,10);
+				stopMelody();
 			}
 			if (checkBreak()==4) {
 				startTimer(longBreakDuration);
-				goToState(stateLong_break);
+				goToState(stateLongBreak);
 				setBrightness(255);
-				initRainbowAnimation(5000,100);
-				break;
+				startRainbowAnimation(5000,100);
+				stopMelody();
 			}
 		}
 		break;
 
-
-	case stateShort_break:
-		updateServo();
-
+	case stateShortBreak:
+		recalculateServoPosition();
 		if (timerExpired()) {
-			goToState(stateAlarm2);
+			goToState(stateWorkAlarm);
+			startSadMelody(2000,true);
+			startServoSweepAnimation(0,120,1000,10);
+			setRGB(200,0,200);
+			startFadeAnimation(500,5);
 		}
 		break;
 
-	case stateLong_break:
-		updateServo();
-
+	case stateLongBreak:
+		recalculateServoPosition();
 		if (timerExpired()) {
-			goToState(stateAlarm2);
+			goToState(stateIdle);
+			stopLedAnimations();
+			startSongMelody(1000,false);
 		}
 		break;
 
-	case stateAlarm2:
-		if(buttonPress()) {
-			goToState(stateWork);
+	case stateWorkAlarm:
+		if (buttonPress()) {
 			startTimer(focusWorkDuration);
-			setHSB(255,0,255);
-			initFadeAnimation(1000,100);
+			setRGB(255,255,255);
+			startFadeAnimation(1000,100);
+			goToState(stateWork);
+			stopMelody();
 		}
 		break;
 	}

@@ -1,0 +1,34 @@
+# class 06 - more led animations
+[slide 1]
+
+Hi there!
+Welcome back to our new class on designing advanced feedback with Arduino.
+In the last video, we actually started exploring the feedback capability of our pomodoro box. In particular we focussed on making the chainable led fade up and down while changing colour.
+I'm sure that you already tried changing the speed of the fade and realised how this very simple led animation can feel more like a very calm and relaxing wave or more like a anxious fast paced breath that you get after a run.
+
+In this part of the class we are going to look at how we can expand our palette of animations and at how we can structure the code in a way that it becomes very "reusable". And with "reausable" I mean that the piece of code that will write together will be so "general", that, every time you will need to have some led animations for your projects you will just be able to copy paste it into your sketch and quickly adapt it to your specific needs.
+
+So I'll start opening the sketch from last time, called 05_led_fade_and_change_color_asynchronous and I'll start moving some things around.
+
+[switch to code]
+[create updateFadeAnimation() function and move things in there]
+[create startFadeAnimation( int duration, int animationSteps) function and move things in there]
+[create readButton() function]
+[try to switch between 2 modes]
+[create animationType enum SINGLE_COLOUR, FADE, BLINK, RAINBOW, NONE]
+[create updateLedAnimation()]
+[create startRainbowAnimation(duration, steps)]
+[create updateLedAnimation()]
+
+[finish the code of the loop to switch from one animation to the other every time you press the button]
+
+AllRight! I think you got an idea about how you can structure your code in a reusable way. It might seems that in order to make the code more "reusable" and "generic" you have to write more lines of code, and this is probably true, but on the other hand the more you manage to make your code "generic" the more you can adapt it for different prototypes. Which is super!
+
+To make it even easier for you to use the code we wrote together in other projects of yours, I went a step further in compartamentizing pieces of codes, and I moved all the code related to the led animations to a new Arduino tab.
+If you open the example called 06_a_structure_the_code_in_multiple_tabs.ino you can see how, by splitting the codes in tabs, it becomes way easier to read the main code section included in the loop function without getting distracted by all the functions which are just related to the led animations.
+
+In the next parts of this course we will use a similar approach to program the servo movements and the sonic feedbacks produced by the buzzer.
+if you had designed and coded different patterns, try to extend the code of exercise 06_a adding your own animations to it. if not, explore the functions we wrote and start getting a feeling of the different effects that you can produce with those simple animations when you cange the color, speed, or amount of steps.
+
+See you soon in the next part!
+Ciao

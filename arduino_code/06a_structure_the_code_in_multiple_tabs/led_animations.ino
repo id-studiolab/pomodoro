@@ -25,6 +25,8 @@ float incrementAmountXStep = (maxBrightness - minBrightness) / animationSteps;
 //the led brightness
 int brightness;
 int color_hue;
+int color_saturarion=255;
+
 
 // multiple types of animation,
 enum animationType {
@@ -40,8 +42,21 @@ animationType currentAnimation = NONE;
 
 void setHue(int hue) {
 	color_hue=hue;
+	//reset saturation to default 255 when calling sethue()
+	color_saturarion=255;
 }
 
+void setRGB(int red, int green, int blue){
+	// RGB to HSV color conversion
+	CRGB rgb( red, green,blue);
+	CHSV hsv;
+
+	hsv=rgb2hsv_approximate(rgb);
+
+	color_hue=hsv.hue;
+	color_saturarion=hsv.sat;
+	brightness=hsv.val;
+}
 
 void startFadeAnimation(int animationDuration, int animationSteps) {
 	currentAnimation = FADE;
@@ -117,6 +132,6 @@ void updateLedAnimation() {
 		lastLedUpdateTime = millis();
 	}
 	//update the led color
-	leds[0].setHSV(color_hue, 255, brightness);
+	leds[0].setHSV(color_hue, color_saturarion, brightness);
 	FastLED.show();
 }

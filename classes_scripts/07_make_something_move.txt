@@ -1,0 +1,27 @@
+# class 07 - make something move
+[slide 1]
+
+Hello!
+Did you have fun animating your LED? did you go for flashy effects to use in dance party? or went for more relaxed animation to keep focus while studying?
+
+In this video we will start looking at how we can control our servo motor in a asynchronous way while the leds are doing their own thing. We will adopt a similar strategy to what we did with the led, and again we will try to make our code as aynchronous as possible.
+
+So, I'll start by opening the example code called 06_a_structure_the_code_in_multiple_tabs
+
+[switch to live code]
+[create a tab]
+[enum servoAnimationType {SWEEP,MOVETO,STOPMOTOR}]
+[startServoSweepAnimations(int min, int max, int duration, int steps )]
+[updateServoSweep()]
+[startServoMoveToAnimation(int target, int duration, int steps)]
+[updateServoMoveTo()]
+[stopServo()]
+[use the code inside the loop when switching between states]
+
+[upload and switch to prototype]
+
+Nice right? Start imagining how you can use the servo to provide the right feedback. Use it to indicate the passing of time, or to highlight that you are in one mode or an other, Or even attach a flag to it and use it for very Important notification. Do you have an idea on how to use the servo? Play with it and if you want share your result making a small video and publish it on instagram using the #... and tag @something in it.
+
+The cool thing of this piece of code is that it works perfectly in conjunction with your led animations and you can basically just plug it in any other Arduino sketch.
+
+Are you starting to understand the advantages of writing code which is "reusable" and asynchronous? Play the next video for more of that... we will start looking at how we can play melodies using just the same pattern. See you there!

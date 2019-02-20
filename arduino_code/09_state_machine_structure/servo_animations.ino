@@ -1,24 +1,80 @@
 //some variables to animate the servo motor.
 int servoPosition;
-int servoDirection;
+int servoDirection=1;
 
-int servoSweepStepDuration;
-int servoSweepStepSize;
+int servoAnimationDuration;
+int servoUpdateInterval;
+int servoStepSize;
 
-int lastServoUpdated;
+long lastServoUpdated;
 
-int servomin;
+int servoMin;
 int servoMax;
 
-int NSweeps;
+int targetPosition;
 
-int init servo_sweep_animations(int min, int max, int sweeps, int duration, int steps ){
-	servomin=min;
-	servomax=max;
-	NSweeps=sweeps;
+// multiple types of animation,
+enum servoAnimationType {
+	SWEEP,
+	MOVETO,
+	STOPMOTOR,
+};
 
-	servoSweepStepDuration=duration/steps;
-	servoSweepStepSize= abs(servoMax-servomin)/steps;
+servoAnimationType currentServoAnimation=STOPMOTOR;
+
+
+int startServoSweepAnimation(int min, int max, int duration, int steps ){
+	currentServoAnimation=SWEEP;
+	servoMin=min;
+	servoMax=max;
+	servoUpdateInterval=duration/steps;
+	servoStepSize= abs(servoMax-servoMin)/steps;
 }
 
-void
+void updateServoSweep(){
+	servoPosition+=servoStepSize*servoDirection;
+	if (servoPosition > servoMax || servoPosition < servoMin) {
+		servoDirection *= -1;
+		//make sure the value falls between the desired range
+		servoPosition=constrain(servoPosition,servoMin,servoMax);
+	}
+}
+
+void startServoMoveToAnimation(int target, int duration, int steps){
+	currentServoAnimation=MOVETO;
+	targetPosition=target;
+	servoUpdateInterval=duration/steps;
+	servoStepSize= abs(target-servoPosition)/steps;
+}
+
+void updateServoMoveTo(){
+	servoPosition+=servoStepSize*servoDirection;
+	if ((servoDirection==1 && servoPosition > targetPosition)||
+	    (servoDirection==-1 && servoPosition < targetPosition)) {
+		servoPosition=targetPosition;
+		currentServoAnimation=STOPMOTOR;
+	}
+}
+
+void stopServo(){
+	currentServoAnimation=STOPMOTOR;
+}
+
+void updateServo(){
+	if (millis() - lastServoUpdated > servoUpdateInterval) {
+		switch (currentServoAnimation) {
+		case SWEEP:
+			updateServoSweep();
+			break;
+		case MOVETO:
+			updateServoMoveTo();
+			break;
+		case STOPMOTOR:
+			break;
+		}
+		lastServoUpdated=millis();
+	}
+
+
+	myServo.write(servoPosition);
+}

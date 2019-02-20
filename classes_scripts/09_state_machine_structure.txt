@@ -1,0 +1,37 @@
+# class 09 - state machine structure
+[slide 1]
+Hi guys!
+Welcome to part 9 of this course! We are almost at the end of our journey together. Today we will look in details at how the pomodoro tecnique works and at how we can describe the functioning of it using a state machine diagram.
+
+From the state machine diagram we will then quickly move into coding the behaviour of the device.
+So, are you ready for this? Let's start!
+
+First of all let's look at how does the pomodoro technique works.
+[slide 2]
+The Pomodoro Technique is a time management method developed by Francesco Cirillo in the late 1980s.[1] The technique uses a timer to break down work into intervals, traditionally 25 minutes in length, separated by short breaks. Each interval is known as a pomodoro, from the Italian word for 'tomato', after the tomato-shaped kitchen timer that Cirillo used as a university student.[2][3]
+
+There are six steps in the original technique:
+
+1) Decide on the task to be done.
+2) Set the pomodoro timer (traditionally to 25 minutes).[1]
+3) Work on the task.
+4) End work when the timer rings and put a checkmark on a piece of paper.[5]
+5) If you have fewer than four checkmarks, take a short break (3–5 minutes), then go to step 2.
+6) After four pomodoros, take a longer break (15–30 minutes), reset your checkmark count to zero, then go to step 1.
+
+Allright, I think we can do it.
+Now we want to convert this set of rules into a state machine diagram, how do we do that? And actually what is a state machine diagram?.
+A state machine diagram is nothing else than a diagram which informs us of the different modes, or states a system might assume, and about the conditions that might bring the system from one state to the other.
+Usually, circles are used to represent states, and arrows are used to represent transitions. Next to the arrows we also usually write what caused the condition to happen, and eventually if something else happens when going from a state to the other.
+So, if we look again at the pacman ghost state machine example we can see that:
+ - at the start of the program the ghost is in the cage;
+ - after some time the ghost is released
+ - the ghost move to the angry state and we start chasing pacman
+ - if pacman eats a large pellet, the ghost becomes scared
+ - so it goes into scared mode and it will start running away from pacman
+ - after some time the effect of the pellet wears off and the ghost go back into angry mode
+ - lasty if pacman eats the ghost this one dies.
+
+Quite simple right? let's look at a possible state machine for our pomodoro timer.
+
+[live code on the state machine]

@@ -39,16 +39,12 @@ Servo myServo;
 int servoPin=6;
 
 
-
-
 void setup() {
 	//initialize the led
 	FastLED.addLeds<P9813, DATA_PIN, CLOCK_PIN, RGB>(leds, NUM_LEDS);
-
-	startServoMoveToAnimation(0,0,1);
+	//initialize the servo
 	myServo.attach(servoPin);
-
-	Serial.begin(9600);
+	startServoMoveToAnimation(0,0,1);
 }
 
 void loop() {
@@ -103,7 +99,7 @@ void loop() {
 }
 
 // this function returns true when the button is pressed
-boolean readButtonA(){
+boolean readButton(){
 	boolean buttonStatus=false;
 	boolean buttonPressed=digitalRead(buttonPin);
 	if (buttonPressed&&!lastButtonPressed) {

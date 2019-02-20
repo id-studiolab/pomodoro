@@ -70,7 +70,7 @@ void setup() {
 
 void loop() {
 	//if the button is pressed we change animation
-	if (readButtonA()) {
+	if (readButton()) {
 		//check that we are within the range of the the animations we programmed
 		if (currentAnimation<numAnimations-1) {
 			//since currentAnimation is a ENUM we cannot simply do currentAnimation++
@@ -111,11 +111,11 @@ void loop() {
 }
 
 //this function returns true when the button is pressed
-boolean readButtonA(){
+boolean readButton(){
 	boolean buttonStatus=false;
 	boolean buttonPressed=digitalRead(buttonPin);
-	
-  //if the button is now down and the last time through the loop() is was not
+
+	//if the button is now down and the last time through the loop() is was not
 	if (buttonPressed && !lastButtonPressed) {
 		buttonStatus=true;
 	}
@@ -166,8 +166,6 @@ void startRainbowAnimation(int rainbowDuration, int rainbowSteps){
 void updateRainbowAnimation() {
 	//increment the hue
 	color_hue += incrementAmountXStep*animationDirection;
-	//set the brightness to max
-	brightness = maxBrightness;
 	//reset the hue to 0 when we reach 1
 	if (color_hue > 255) {
 		color_hue = 0;
@@ -179,7 +177,7 @@ void updateLedAnimation() {
 		switch (currentAnimation) {
 		case NONE:
 			break;
-      
+
 		case FADE:
 			updateFadeAnimation();
 			break;
