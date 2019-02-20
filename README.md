@@ -75,7 +75,7 @@ the full pomodoro timer state machine
 Inside this repository you can also find:
 - [The cut files](https://github.com/id-studiolab/pomodoro/blob/master/cut_files/box.pdf) to make the pomodoro box yourself
 - [Instructions on how to assemble the pomodoro box](https://github.com/id-studiolab/pomodoro/tree/master/assembly_instructions)
-- ...and probably much more.... enjoy ❤️ 
+- ...and probably much more.... enjoy ❤️
 
-## DID YOU FOUND ERRORS OR YOU HAVE SUGGESTIONS ON HOW TO MAKE THIS VIDEO CLASS BETTER?
+## DID YOU FIND ERRORS OR YOU HAVE SUGGESTIONS ON HOW TO MAKE THIS VIDEO CLASS BETTER?
 Please open an issue on this repository and help us improve the course materials for the future students of this course.
