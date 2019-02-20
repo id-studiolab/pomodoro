@@ -33,5 +33,21 @@ So, if we look again at the pacman ghost state machine example we can see that:
  - lasty if pacman eats the ghost this one dies.
 
 Quite simple right? let's look at a possible state machine for our pomodoro timer.
+[describe transitions in the diagram]
+[next slide]
+Once you are done making the state transition diagram, you want to list all the transition from one state to an other in a table like this one. For each state you mention the starting state, the condition that make you jump to an other state, the effect that the change of state has to provoke, and eventually the destination state.
 
-[live code on the state machine]
+Once you have this, transforming this very advanced behaviour in code it is a piece of cake. Let's see how to do that.
+
+To help you start coding the state machine without restarting from sketch I put together an incomplete code example called 09 state machine structure.
+I just put it together copy pasting from the code that we already wrote together and making some minor tweaks, so it should look very familiar.
+
+Let's have a look at it.
+
+[open IDE exercise 09]
+[comment on code]
+[make the first 3 states of the state machine]
+
+So, at this point I think you have a clear understanding of how to proceed right?. Try to follow the state transition table and finish programming the pomodoro timer state machine.
+
+Once done, go to the next and final video, we will look together at the solution and at how you can make the pomodoro timer even more expressive and specific.  

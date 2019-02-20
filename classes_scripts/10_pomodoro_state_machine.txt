@@ -1,0 +1,27 @@
+# class 10 - pomodoro state machine
+
+Alright,
+how did it go with the state machine? did you manage to finish programming the pomodoro behaviour?
+
+I wanna start by showing you the behaviuour I programmed. You will find my version of the pomodoro state machine inside the folder called 10_pomodoro state machine.
+
+[look at the code]
+[comments on the code]
+[look at prototype]
+
+Nice right! I guess that once you time it properly, you could actually start using this device to help you keep focus while studying right?
+
+In my opinion, I still want to improve this device a bit and make a bit more fitting with my needs:
+- probably I want to make the color palette a bit more special,
+- As most of the time I work in offices with other people, I probably should find a way to mute the timer.
+- Also to make it more clear what it is happening and how I can use the device, it is probably good if I write some labels to make the UI more explicit.
+
+And you? how would you like your pomodoro timer to be? What kind of feedbacks would you like to receive? How can you make this device even better and especially more functional to your specific needs?
+
+As your last assignment I'd like you to really get to own this device, tweak it to your own taste, personalize the look, the functions and the code of this pomodoro timer box and make it yours.
+
+I hope you enjoyed this class and got to know some new coding tricks that you fill find useful in your prototyping practice. If you end up transforming this tutorial in something else that you would like to share please do and use the issues on the github repository to show me what you made.
+
+It was a real pleasure for me to do this video class! Have fun prototyping with electronics, and see you around!
+
+Ciao!
