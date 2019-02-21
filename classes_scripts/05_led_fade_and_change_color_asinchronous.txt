@@ -1,7 +1,7 @@
-# class 05 - Led fade and change colour asinchronous
+# class 05 - Led fade and change colour asynchronous
 [slide 1]
 
-Hi guys, welcome back to our video class! The Last challance I gave was definetly the most challenging so far. But I'm sure that most of you managed to solve it.
+Hi guys, welcome back to our video class! The Last challenge I gave was definitely the most challenging so far. But I'm sure that most of you managed to solve it.
 Let's try and solve the challenge together now.
 
 [slide 2]
@@ -10,8 +10,8 @@ And if we use long delays or you have delays inside of a for loop, we start expe
 
 The graph up here, is basically a picture of our previous code, we have the fading happening and we fade only once per loop. and as you can see in this interval of time we can only execute the code in the loop function 3 times.
 
-Now we are going to try to solve the challenge in a different way. We want to execute the loop function as many time as possible in the same amount of time. And by counting how much time has passed then we will update the value of the brightness.
-The good aspect of this tecnique is that at every loop we can also check on other sensors like the potentiometer, a button or anything else. Hence we have the feeling that the Arduino is doing multiple things at the same time. But how do we keep track of time?
+Now we are going to try to solve the challenge in a different way. We want to execute the loop function as many time as possible in the same amount of time. And by counting how much time has passed then we will update the value of the brightness only after noticing a certain time interval has passed.
+The good aspect of this technique is that at every loop we can also check on other sensors like the potentiometer, a button or anything else. Hence we have the feeling that the Arduino is doing multiple things at the same time. But how do we keep track of time?
 
 [slide 3]
 That is not very difficult, we can use the millis() function for that. We can use this function like a clock to know how much time has passed since the last time we reboot our board. This value is expressed in milliseconds.
@@ -21,7 +21,7 @@ So, let's assume that we want to update the led brightness at regular intervals 
 Then, every time we update the value we save a timestamp or a checkpoint.
 Eventually we just need to verify if the interval of time has passed.
 
-So we know that the time passed is equals to currenttime - last update time. and if this is bigger than interval, it is time to update the brightness of the led again.
+So we know that the time passed is equals to current time - last update time. and if this is bigger than the interval, then it is time to update the brightness of the led again.
 
 It might still sound a bit confusing, but let's try to put this into code.
 
