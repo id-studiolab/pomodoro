@@ -8,17 +8,23 @@ Intro to the class resources and materials.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/VUZ3verZ18k" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-- [[VIDEO]](https://youtu.be/VUZ3verZ18k)
-- [[SLIDES]](https://github.com/id-studiolab/pomodoro/blob/master/slides/00_intro.pdf)
+[[VIDEO]](https://youtu.be/VUZ3verZ18k)
+[[SLIDES]](https://github.com/id-studiolab/pomodoro/blob/master/slides/00_intro.pdf)
 
 ### Part 01: Chainable_led_blink
 Use the ChainableLED library to blink one led.
-- [[VIDEO]](https://youtu.be/VHdmtCyc9As)
-- [[CODE]](https://github.com/id-studiolab/pomodoro/blob/master/arduino_code/01_chainable_led_blink/01_chainable_led_blink.ino)
-- [[SLIDES]](https://github.com/id-studiolab/pomodoro/blob/master/slides/01_chainable_led_blink.pdf)
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/VHdmtCyc9As" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+[[VIDEO]](https://youtu.be/VHdmtCyc9As)
+[[CODE]](https://github.com/id-studiolab/pomodoro/blob/master/arduino_code/01_chainable_led_blink/01_chainable_led_blink.ino)
+[[SLIDES]](https://github.com/id-studiolab/pomodoro/blob/master/slides/01_chainable_led_blink.pdf)
 
 ### Part 02: Led_blink_fastled
 Blink the led using the fastled library.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/IL3P-2P7awE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 - [[VIDEO]](https://youtu.be/IL3P-2P7awE)
 - [[CODE]](https://github.com/id-studiolab/pomodoro/blob/master/arduino_code/02_led_blink_fastled/02_led_blink_fastled.ino)
 - [[SLIDES]](https://github.com/id-studiolab/pomodoro/blob/master/slides/02_led_blink_fastled.pdf)
