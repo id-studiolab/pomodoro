@@ -81,19 +81,17 @@ Initial state machine code structure (with the first 3 states)
 [[CODE]](https://github.com/id-studiolab/pomodoro/tree/master/arduino_code/09_state_machine_structure)
 [[SLIDES]](https://id-studiolab.github.io/pomodoro/slides/09_state_machine_structure.pdf)
 
-
 ### 🍅 Part 10: Pomodoro_state_machine
 The full pomodoro timer state machine
 [[VIDEO]] wip
 [[CODE]](https://github.com/id-studiolab/pomodoro/tree/master/arduino_code/10_pomodoro_state_machine)
 [[SLIDES]](https://id-studiolab.github.io/pomodoro/slides/10_pomodoro_state_machine.pdf)
 
-
 ## OTHER RESOURCES
 Inside this repository you can also find:
-- [The cut files](https://github.com/id-studiolab/pomodoro/blob/master/cut_files/box.pdf) to make the pomodoro box yourself
-- [Instructions on how to assemble the pomodoro box](https://github.com/id-studiolab/pomodoro/tree/master/assembly_instructions)
+- [The cut files](https://id-studiolab.github.io/pomodoro/cut_files/box.pdf) to make the pomodoro box yourself.
+- [Instructions on how to assemble the pomodoro box](https://id-studiolab.github.io/pomodoro/assembly_instructions)
 - ...and probably much more.... enjoy ❤️
 
 ## DID YOU FIND ERRORS OR Do YOU HAVE SUGGESTIONS ON HOW TO MAKE THIS VIDEO CLASS BETTER?
-Please open an issue on this repository and help us improve the course materials for the future students of this course.
+Please open an issue on the repository and help us improve the materials for the future students of this course.
