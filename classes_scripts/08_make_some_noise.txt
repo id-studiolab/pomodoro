@@ -1,12 +1,14 @@
 # class 08 - make some noise
 [slide 1]
 
-Hi guys welcome back to our lovely class where we are trying to learn how to program this very cute pomodoro box.
+Hi guys welcome back to our lovely class in which we are trying to learn how to program this very cute pomodoro box.
 In the previous videos we basically used all the electronic components that you squeezed inside the pomodoro box except for one... the Buzzer.
 
-This small piezoelectric module gives the Arduino the capability of producing some sounds. You should know by now how much sounds is important in providing the feedback to the user. Just think about every time you scan your card to use public transportation. Can you recall the sound the machine makes when you don't have enough credit? What do you hear instead when you successfully check-in?
+This small piezoelectric module gives the Arduino the capability of producing some sounds. 
+Adding sound to your repertoire of giving feedback can make your design much easier to understand for the user.
+Just think about every time you scan your card to use public transportation. Can you recall the sound the machine makes when you don't have enough credit? What do you hear instead when you successfully check-in?
 
-In this class I'll show you how to play with sounds how to use the piezo buzzer to play some melodies. Since I'll be using the same exact patter I used to program the led animations, to speed up the video I won't code everything from sketch but I'll try to comment the Arduino sketch I already wrote for you.
+In this class I'll show you how to play with sounds and how to use the piezo buzzer to play some melodies. Since I'll be using the same exact pattern I used to program the led animations, to speed up the video I won't code everything from scratch but I'll try to comment the Arduino sketch I already wrote for you.
 
 So go ahead and open the sketch called 08_make_some_noise.ino
 
@@ -19,6 +21,6 @@ So go ahead and open the sketch called 08_make_some_noise.ino
 Cool, I guess you got a feeling of what you can do with this. And how you can very simply design some interesting and expressive sounds for your device. Buzzers are not the best component to produce sounds, but they are definetly the easiest to prototype with. If you want to explore more advanced sound possibilities using Arduino you can always try connecting it to a better speaker and, instead of using the very simple tone library, have a look at the Mozzi library and transform your Arduino in a quite decent sound synthesiser.
 
 Now that we are done with creating all the basic pieces to program our pomodoro timer let's go into that. In the next video we will look at the state machine diagram of the pomodoro timer.
-In the meantime I'd like if you to code two different melodies, You will use one to indicate that it is time to take a break, and The other one will be use to communicate that it is time to go back to work.
+In the meantime I'd like if you to code two different melodies, You will use one to indicate that it is time to take a break, and the other one will be use to communicate that it is time to go back to work.
 
 I look forward to hear the sounds you designed being played in the corridors of the industrial design faculty!
