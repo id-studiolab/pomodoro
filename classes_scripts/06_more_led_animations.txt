@@ -21,10 +21,14 @@ So I'll start opening the sketch from last time, called 05_led_fade_and_change_c
 [create updateLedAnimation()]
 
 [finish the code of the loop to switch from one animation to the other every time you press the button]
+[show the prototype]
 
 AllRight! I think you got an idea about how you can structure your code in a reusable way. It might seems that in order to make the code more "reusable" and "generic" you have to write more lines of code, and this is probably true, but on the other hand the more you manage to make your code "generic" the more you can adapt it for different prototypes. Which is super!
 
 To make it even easier for you to use the code we wrote together in other projects of yours, I went a step further in compartamentizing pieces of codes, and I moved all the code related to the led animations to a new Arduino tab.
+
+[open 06a sketch]
+
 If you open the example called 06_a_structure_the_code_in_multiple_tabs.ino you can see how, by splitting the codes in tabs, it becomes way easier to read the main code section included in the loop function without getting distracted by all the functions which are just related to the led animations.
 
 In the next parts of this course we will use a similar approach to program the servo movements and the sonic feedbacks produced by the buzzer.

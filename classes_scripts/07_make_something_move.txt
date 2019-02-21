@@ -20,7 +20,7 @@ So, I'll start by opening the example code called 06_a_structure_the_code_in_mul
 
 [upload and switch to prototype]
 
-Nice right? Start imagining how you can use the servo to provide the right feedback. Use it to indicate the passing of time, or to highlight that you are in one mode or an other, Or even attach a flag to it and use it for very Important notification. Do you have an idea on how to use the servo? Play with it and if you want share your result making a small video and publish it on instagram using the #... and tag @something in it.
+Nice right? Start imagining how you can use the servo to provide the right feedback. Use it to indicate the passing of time, or to highlight that you are in one mode or an other, Or even attach a flag to it and use it for very Important notification. Do you have an idea on how to use the servo? Play with it and if you want share your result making a small video and publish it on instagram using the #electropomodoro.
 
 The cool thing of this piece of code is that it works perfectly in conjunction with your led animations and you can basically just plug it in any other Arduino sketch.
 

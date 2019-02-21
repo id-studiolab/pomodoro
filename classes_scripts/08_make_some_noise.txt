@@ -1,4 +1,5 @@
 # class 08 - make some noise
+[slide 1]
 
 Hi guys welcome back to our lovely class where we are trying to learn how to program this very cute pomodoro box.
 In the previous videos we basically used all the electronic components that you squeezed inside the pomodoro box except for one... the Buzzer.
