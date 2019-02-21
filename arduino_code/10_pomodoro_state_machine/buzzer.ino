@@ -1,7 +1,5 @@
 #include "pitches.h"
 
-
-//some variables to animate the servo motor.
 int notePlaying;
 
 int tempo=1000;
@@ -76,7 +74,6 @@ void stopMelody(){
 }
 
 void updateMelody(){
-
 
 	if (melodyPlaying) {
 		if (millis()-lastNotePlayed>currentNoteDuration) {

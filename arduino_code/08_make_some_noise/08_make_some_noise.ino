@@ -49,7 +49,7 @@ void setup() {
 
 void loop() {
 	//if the button is pressed we change animation
-	if (readButtonA()) {
+	if (readButton()) {
 		//check that we are within the range of the the animations we programmed
 		if (activeMode<numAnimations) {
 			activeMode++;
