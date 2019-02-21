@@ -1,3 +1,6 @@
+title: Pomodoro
+description: A series of video classed about using Arduino to produce advanced asynchronous feedback.
+
 theme: jekyll-theme-minimal
 logo: ./illustration/poster.jpeg
 show_downloads: "true"
