@@ -11,6 +11,7 @@
 */
 
 #include <FastLED.h>
+#include <Servo.h>
 
 //connect the potentiometer to pin A0
 int potPin = A0;
@@ -35,9 +36,15 @@ int numAnimations = 5;
 int activeMode = 0;
 
 
+//here the code for the servo
+int servoPin=6;
+Servo myServo;
+
+
 void setup() {
   //start the led library
   FastLED.addLeds<P9813, DATA_PIN, CLOCK_PIN, RGB>(leds, NUM_LEDS);
+  myServo.attach(servoPin);
 }
 
 void loop() {
@@ -57,9 +64,13 @@ void loop() {
       case 1: //the blink
         //we can still use the initFadeAnimation setting the number of steps to 1
         startFadeAnimation(500, 1);
+        
+        startServoSweep(0,180,1000,100);
         break;
       case 2: //the fade
         startFadeAnimation(2000, 100);
+        startServoSweep(60,120,200,1);
+
         break;
       case 3: //the rainbow
         startRainbowAnimation(1000, 100);
@@ -77,6 +88,7 @@ void loop() {
   }
   //timing checks and led update is done inside this function
   updateLedAnimation();
+  updateServo();
 }
 
 // this function returns true when the button is pressed

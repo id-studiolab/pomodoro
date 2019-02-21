@@ -8,7 +8,7 @@
 
    TODO:
    - Design and code an other animation wich doesn't use delay: blink, rainbow, etc...
- */
+*/
 
 #include <FastLED.h>
 
@@ -32,7 +32,7 @@ long lastLedUpdateTime = 0;
 //how many steps from minumum brightess to maximum brightess
 int fadesteps = 40;
 //how often are we supposed to change the color of the Led
-float fadeUpdateInterval=fadeDuration/fadesteps;
+float fadeUpdateInterval = fadeDuration / fadesteps;
 //are we fading towards the maximum brightess (+1) or towards the minumum brightess (-1)
 int fadeDirection = 1;
 //the maximum brightess
@@ -44,32 +44,116 @@ float fadeAmountXStep = (fadeMax - fadeMin) / fadesteps;
 //the led brightess
 float brightness;
 
+int hue=150;
+
+enum animationType {
+  SINGLE_COLOR,
+  FADE,
+  BLINK,
+  RAINBOW,
+  NONE,
+};
+
+animationType activeAnimation = NONE;
+
+boolean lastButtonPressed = false;
+
 void setup() {
-	//start the led library
-	FastLED.addLeds<P9813, DATA_PIN, CLOCK_PIN, RGB>(leds, NUM_LEDS);
+  //start the led library
+  FastLED.addLeds<P9813, DATA_PIN, CLOCK_PIN, RGB>(leds, NUM_LEDS);
+
 }
+
+int activeMode = 0;
 
 void loop() {
-	float potValue = analogRead(potPin);
-	int hue = map (potValue,0,1024,0,255);
+  //  float potValue = analogRead(potPin);
+  //  int hue = map (potValue, 0, 1024, 0, 255);
 
-	leds[0].setHue(hue);
+  if (buttonPressed) {
+    activeMode++;
+    if (activeMode == 2) {
+      activeMode = 0;
+    }
+    
+    if (activeMode == 0) {
+      startFadeAnimation( 500, 10);
+    } else if (activeMode == 1) {
+      startRainbowAnimation( 500, 10);
+    }
+  }
 
-	//if fadeUpdateInterval has passed, we have to update the brightess of the led
-	if (millis() - lastLedUpdateTime > fadeUpdateInterval) {
-		//update the brightess value
-		brightness = brightness + fadeAmountXStep * fadeDirection;
-		//if we reach the maximum value or the minimum, we reverse the direction
-		if (brightness > fadeMax || brightness < fadeMin) {
-			//make sure that the value is not outside the range
-			brightness = constrain(brightness, fadeMin, fadeMax);
-			//invert the direction
-			fadeDirection *= -1;
-		}
-		lastLedUpdateTime = millis();
-	}
+  leds[0].setHue(hue);
 
-	//update the led color
-	leds[0].setHSV( hue, 255, brightness);
-	FastLED.show();
+  updateLedAnimation();
 }
+
+void updateLedAnimation() {
+  //if fadeUpdateInterval has passed, we have to update the brightess of the led
+  if (millis() - lastLedUpdateTime > fadeUpdateInterval) {
+    switch (activeAnimation) {
+      case NONE:
+        break;
+
+      case FADE:
+        updateFadeAnimation();
+        break;
+
+      case BLINK:
+        break;
+
+      case RAINBOW:
+        updateRainbowAnimation();
+        break;
+    }
+
+    lastLedUpdateTime = millis();
+  }
+  //update the led color
+  leds[0].setHSV( hue, 255, brightness);
+  FastLED.show();
+}
+
+void updateFadeAnimation() {
+  brightness = brightness + fadeAmountXStep * fadeDirection;
+  //if we reach the maximum value or the minimum, we reverse the direction
+  if (brightness > fadeMax || brightness < fadeMin) {
+    //make sure that the value is not outside the range
+    brightness = constrain(brightness, fadeMin, fadeMax);
+    //invert the direction
+    fadeDirection *= -1;
+  }
+}
+
+void updateRainbowAnimation() {
+  hue++;
+  if (hue > 255) {
+    hue = 0;
+  }
+}
+
+boolean buttonPressed() {
+  int buttonValue = digitalRead(2);
+  boolean buttonPressed = false;
+  if (!lastButtonPressed && buttonValue) {
+    buttonPressed = true;
+  }
+  lastButtonPressed = buttonValue;
+  return (buttonPressed);
+}
+
+void startRainbowAnimation(int duration, int steps) {
+  fadeDuration = duration;
+  fadesteps = steps;
+  fadeUpdateInterval = fadeDuration / fadesteps;
+  fadeAmountXStep = (fadeMax - fadeMin) / fadesteps;
+}
+
+void startFadeAnimation(int duration, int steps) {
+  fadeDuration = duration;
+  fadesteps = steps;
+  fadeUpdateInterval = fadeDuration / fadesteps;
+  fadeAmountXStep = (fadeMax - fadeMin) / fadesteps;
+}
+
+

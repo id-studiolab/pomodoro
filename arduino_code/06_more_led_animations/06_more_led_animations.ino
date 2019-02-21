@@ -92,7 +92,7 @@ void loop() {
 			startFadeAnimation(500,1);
 			break;
 		case RAINBOW:
-			startFadeAnimation(1000,100);
+			startRainbowAnimation(1000,100);
 			break;
 		case NONE:
 			stopAnimations();

@@ -1,7 +1,5 @@
 #include "pitches.h"
 
-
-//some variables to animate the servo motor.
 int notePlaying;
 
 int tempo=1000;

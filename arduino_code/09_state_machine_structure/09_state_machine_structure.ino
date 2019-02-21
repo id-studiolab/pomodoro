@@ -46,8 +46,8 @@ unsigned long timerDuration;
 unsigned long lastTimerStarted;
 
 // const long focusWorkDuration=1000*60*20; //20 minutes
-// const long shortBreakDuration=1000*60*5; //20 minutes
-// const long longBreakDuration=1000*60*15; //20 minutes
+// const long shortBreakDuration=1000*60*5; //5 minutes
+// const long longBreakDuration=1000*60*15; //15 minutes
 
 const long focusWorkDuration=5000; //20 minutes
 const long shortBreakDuration=5000; //20 minutes
@@ -146,9 +146,21 @@ void updateStateMachine() {
 	switch (currentState) {
 
 	case stateIdle:
+    if(buttonPress()){
+      startTimer(focusWorkDuration);
+      setRGB(255,255,255);
+      startFadeAnimation(2000,100);
+      goToState(stateWork);
+    }
 		break;
 
 	case stateWork:
+    if(timerExpired()){
+      startHappyMelody(1000,true);
+      setRGB(0,255,0);
+      startFadeAnimation(500,1);
+      goToState(stateBreakAlarm);
+    }
 		break;
 
 	case stateBreakAlarm:
