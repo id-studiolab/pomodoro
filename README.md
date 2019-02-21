@@ -5,6 +5,7 @@ In this repository you will find all the materials related to the online class.
 
 ### Part 00: Welcome
 Intro to the class resources and materials.
+<iframe width="560" height="315" src="https://www.youtube.com/embed/VUZ3verZ18k" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 - [[VIDEO]](https://youtu.be/VUZ3verZ18k)
 - [[SLIDES]](https://github.com/id-studiolab/pomodoro/blob/master/slides/00_intro.pdf)
 
