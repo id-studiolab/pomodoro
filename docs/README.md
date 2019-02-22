@@ -63,8 +63,10 @@ Demonstrate how to create multiple types of animations using one led.
 
 [[VIDEO]](https://youtu.be/UqlL1XWpdUs)
 [[CODE]](https://github.com/id-studiolab/pomodoro/blob/master/arduino_code/06_more_led_animations/06_more_led_animations.ino)
-[[CODE-v2]](https://github.com/id-studiolab/pomodoro/tree/master/arduino_code/06a_structure_the_code_in_multiple_tabs) Split independent pieces of codes into different tabs to make the led animation code more "reusable".
 [[SLIDES]](https://id-studiolab.github.io/pomodoro/slides/06_more_led_animations.pdf)
+
+Here is the second version of the code from part 6 about splitting the independent pieces of codes into different tabs to make the led animation code more "reusable".
+[[CODE-v2]](https://github.com/id-studiolab/pomodoro/tree/master/arduino_code/06a_structure_the_code_in_multiple_tabs)
 
 ### 🍅 Part 07: Make_something_move
 Demonstrate how to control the servo motor in a asynchronous way.
