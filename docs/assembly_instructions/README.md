@@ -82,6 +82,7 @@ Potentiometer  | A0
 Buzzer  | D3
 Chainable led  | D4
 Servo motor  | D6
+
 ![connect the cables](./pictures/23_atach_components_to_board.JPG)
 
 19) Try to organize the cables inside and carefully close the box. Use a piece of tape to secure it.
