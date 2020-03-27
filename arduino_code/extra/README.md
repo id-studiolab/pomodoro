@@ -1,7 +1,9 @@
-# Programming advanced feedback with Arduino
-In this repository you will find all the materials related to the online class.
+# Examples addition to the code files for the video tutorial
 
-You can easily access all the videos and find all the instructions to get started assemblying and programming your pomodoro timer at this link: [https://id-studiolab.github.io/pomodoro/](https://id-studiolab.github.io/pomodoro/)
-
-## DID YOU FIND ERRORS OR DO YOU HAVE SUGGESTIONS ON HOW TO MAKE THIS VIDEO CLASS BETTER?
-Please open an issue on this repository and help us improve the course materials for the future students of this course.
+- pomodoro-sweet-n-simple
+	> An exmaple of a simple Pomodoro timer with button, LED, buzzer. Simple in the sense that the feedback is static (LED is on or off, buzzer is sounding or silent).
+- pomodoro-fancy-pancy
+	> An example of a Pomodoro timer with dynamic feedback, it uses a button, LED, buzzer and servo. Eg., the LED can blink, fade or show a rainbow, the buzzer can play fancy 8bit melodies, the servo can move across the 180 debrees range in time.
+- 11_extra_advanced_led_animations
+- 00_test_input_output
+- test_melody
