@@ -14,9 +14,9 @@
 void setup() {	
 	// Make sure all the Acting Machines are ready
 	setupPomodoroMachine();
-	setupLedAnimationMachine(); 	    // Check file with Led Animation Machine for pin assignment
-	setupServoMachine(3);             // The servo is connected to pin 3
-	setupSoundMachine(4); 			      // The buzzer is connected to pin 4
+  setupSoundMachine(3);             // The buzzer is connected to pin 3
+	setupServoMachine(4);             // The servo is connected to pin 4
+  setupLedAnimationMachine();       // Check tab with lad_animation_machine for pin assignment
 	
 	// Setup printing to the console
 	Serial.begin(9600);
@@ -24,7 +24,7 @@ void setup() {
 
 void loop() {
 	updatePomodoroMachine();
-	updateLedAnimationMachine();
 	updateSoundMachine();
 	updateServoMachine();
+  updateLedAnimationMachine();
 }
