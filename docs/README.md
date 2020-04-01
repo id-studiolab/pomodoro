@@ -47,7 +47,8 @@ Use the potentiometer to change the color of the led while it is fading; Notice 
 [[CODE]](https://github.com/id-studiolab/pomodoro/blob/master/arduino_code/04_led_fade_and_change_color/04_led_fade_and_change_color.ino)
 [[SLIDES]](https://id-studiolab.github.io/pomodoro/slides/04_led_fade_and_change_color.pdf)
 
-### 🍅 Part 05: Single_color_fade
+
+### 🍅 <a name="Single_color_fade">Part 05: Single_color_fade</a>
 Use the potentiometer to change the color of the led while it is fading; Notice that the color changes indipendently from the fade sequence.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/w7xv-VktZmw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
